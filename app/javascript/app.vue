@@ -95,7 +95,9 @@ export default {
       .then(response => (
         this.setMemo()
       ));
-    }
+      this.title = ""
+      this.description = ""
+    } 
   }
 }
 </script>
