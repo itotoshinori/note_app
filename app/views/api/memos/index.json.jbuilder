@@ -1,1 +1,1 @@
-json.array! @memos, :title, :description
+json.array! @memos, :id, :title, :description, :created_at

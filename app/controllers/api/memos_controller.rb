@@ -11,6 +11,11 @@ class Api::MemosController < ApplicationController
       render json: @memo.errors, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    memo = Memo.find(params[:id])
+    memo.destroy
+  end
  
   private
     def memo_params

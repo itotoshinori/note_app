@@ -13,9 +13,11 @@
       <div v-for="memo in memos" :key="memo.id" class="card">
         <div class="card-body">
           <div class="card-title">
-            {{ memo.title }}
+            {{ memo.id }}.{{ memo.title }}
           </div>
-          {{ memo.description }}
+          <div>{{ memo.description }}</div>
+          <div>{{ formatDate(memo.created_at) }}</div>
+          <div><button @click="deleteMemo(memo.id)">削除</button></div>
         </div>
       </div>
     </div>
@@ -67,9 +69,11 @@
 
 
 <script>
-  import axios from 'axios';
+import axios from 'axios';
+import utilsMixin from "utilities";
 
 export default {
+  mixins: [utilsMixin],
   data: function () {
     return {
       memos: "memos",
@@ -97,7 +101,13 @@ export default {
       ));
       this.title = ""
       this.description = ""
-    } 
+    },
+    deleteMemo(id){
+      if (window.confirm("NO." + id + "を本当に削除しますか？")) {
+        axios.delete("/api/memos/" + id)
+        this.setMemo()
+      }   
+    }
   }
 }
 </script>
