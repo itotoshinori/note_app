@@ -3,9 +3,11 @@
     <div class="form">
       <div class="form-group">
         <input v-model="title" placeholder="title" class="form-control">
+        <div class="errorMessage">{{ errorMessage1 }}</div>
       </div>
       <div class="form-group">
         <input v-model="description" placeholder="description" class="form-control">
+        <div class="errorMessage">{{ errorMessage2 }}</div>
       </div>
       <button @click="addMemo">メモを追加</button>
     </div>
@@ -24,6 +26,9 @@
   </div>
 </template>
 <style lang="scss" scoped>
+  .errorMessage {
+    color:red;
+  }
   .form {
    display: flex;
    flex-direction: column;
@@ -79,6 +84,8 @@ export default {
       memos: "memos",
       title: '',
       description: '',
+      errorMessage1: '',
+      errorMessage2: '', 
     }
   },
   mounted () {
@@ -92,7 +99,9 @@ export default {
       ))
     },
     addMemo: function() {
-      if(this.title != "" && this.description != ""){
+      this.errorMessage1 = ''
+      this.errorMessage2 = ''
+      if(this.title != '' && this.description != ''){
         axios.post('/api/memos', {
           title: this.title,
           description: this.description
@@ -100,10 +109,15 @@ export default {
         .then(response => (
           this.setMemo()
         ));
-        this.title = ""
-        this.description = ""
+        this.title = ''
+        this.description = ''
       }else{
-        alert("両方のカラムに入力をお願いします")
+        if(!this.title){
+          this.errorMessage1 = 'タイトルを入力して下さい'
+        }
+        if(!this.description){
+          this.errorMessage2 = '本文を入力して下さい'
+        }
       } 
     },
     deleteMemo(id){
