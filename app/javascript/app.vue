@@ -92,15 +92,19 @@ export default {
       ))
     },
     addMemo: function() {
-      axios.post('/api/memos', {
-        title: this.title,
-        description: this.description
-      })
-      .then(response => (
-        this.setMemo()
-      ));
-      this.title = ""
-      this.description = ""
+      if(this.title != "" && this.description != ""){
+        axios.post('/api/memos', {
+          title: this.title,
+          description: this.description
+        })
+        .then(response => (
+          this.setMemo()
+        ));
+        this.title = ""
+        this.description = ""
+      }else{
+        alert("両方のカラムに入力をお願いします")
+      } 
     },
     deleteMemo(id){
       if (window.confirm("NO." + id + "を本当に削除しますか？")) {
