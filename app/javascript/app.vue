@@ -134,7 +134,7 @@ p {
   }
 
   .card {
-    width: 300px;
+    width: 238px;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
     margin: 16px;
