@@ -90,7 +90,7 @@
 }
 @media (max-width: 1020px) and (min-width: 768px) { 
 	.modal-container {
-		width: 80%;
+		width: 40%;
 		margin: 0px auto;
 		padding: 20px 10px;
 		background-color: bisque;

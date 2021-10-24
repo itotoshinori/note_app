@@ -82,10 +82,12 @@ export default {
     },
     update(post){
       this.title = post.title 
+      this.description = post.description
       axios.put('/api/memos/'+post.id, {
         title: post.title,
         description: post.description
       })
+      //this.showModal = false;
       window.location.reload();
     },
     closeModal() {
