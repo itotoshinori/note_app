@@ -33,14 +33,13 @@ export default {
   data: function () {
     return {
       memos: "memos",
-      memo:'1111',
       title: '',
       message:'',
       message2:'',
       description: '',
       errorMessage1: '',
       errorMessage2: '',
-      showModal:false 
+      showModal:false,
     }
   },
   mounted () {
@@ -146,6 +145,11 @@ p {
     &-title {
       margin-bottom: .75rem;
       font-weight: 600;
+    }
+  }
+  @media (max-width: 1020px) and (min-width: 768px) { 
+    .card {
+      width: 600px;
     }
   }
 </style>

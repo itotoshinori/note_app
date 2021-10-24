@@ -24,33 +24,33 @@
 </template>
 
 <script>
-  export default {
-    name: 'Modal',
-    props: {
-      // 受け取る属性名を指定
-      val: Object, // オブジェクトのみ受け取る
-    },
-    data:function(){
-      return{
-        formObject: {
-          'name': this.val.name, 
-          'title':this.val.title,
-          'description':this.val.description,
-          'id':this.val.id,
-					'errorMessage1':'',
-					'errorMessage2':'',
-        },
-      }
-    },
-    methods:{
-      update(){
-				this.$emit('panretMessage', this.formObject)
-        this.post.title = ''
-        this.post.description = ''
-				this.$emit('close') 
-      }
-    }
-  }
+export default {
+	name: 'Modal',
+	props: {
+		// 受け取る属性名を指定
+		val: Object, // オブジェクトのみ受け取る
+	},
+	data:function(){
+		return{
+			formObject: {
+				'name': this.val.name, 
+				'title':this.val.title,
+				'description':this.val.description,
+				'id':this.val.id,
+				'errorMessage1':'',
+				'errorMessage2':'',
+			},
+		}
+	},
+	methods:{
+		update(){
+			this.$emit('panretMessage', this.formObject)
+			this.post.title = ''
+			this.post.description = ''
+			this.$emit('close') 
+		}
+	}
+}
 </script>
 
 <style scoped>
@@ -90,7 +90,7 @@
 }
 @media (max-width: 1020px) and (min-width: 768px) { 
 	.modal-container {
-		width: 40%;
+		width: 80%;
 		margin: 0px auto;
 		padding: 20px 10px;
 		background-color: bisque;
