@@ -115,7 +115,8 @@ export default {
       if (window.confirm("NO." + id + "を本当に削除しますか？")) {
         axios.delete("/api/memos/" + id)  
       } 
-      window.location.reload(); 
+      this.setMemo()
+      //window.location.reload(); 
     },
     add(post) {
       this.title=post.title;
