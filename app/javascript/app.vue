@@ -1,16 +1,6 @@
 <template>
   <div id="app">
-    <div class="form">
-      <div class="form-group">
-        <input v-model="title" placeholder="title" class="form-control">
-        <div class="errorMessage">{{ errorMessage1 }}</div>
-      </div>
-      <div class="form-group">
-        <input v-model="description" placeholder="description" class="form-control">
-        <div class="errorMessage">{{ errorMessage2 }}</div>
-      </div>
-      <button @click="addMemo">メモを追加</button>
-    </div>
+    <NewForm v-on:panretMessage="add"></NewForm>
     <div class="flex">
       <div v-for="memo in memos" :key="memo.id" class="card">
         <div class="card-body">
@@ -72,17 +62,22 @@
   }
 </style>
 
-
 <script>
 import axios from 'axios';
 import utilsMixin from "utilities";
+import NewForm from './components/newForm.vue';
 
 export default {
   mixins: [utilsMixin],
+  components: {
+    NewForm
+  },
   data: function () {
     return {
       memos: "memos",
       title: '',
+      message:'',
+      message2:'',
       description: '',
       errorMessage1: '',
       errorMessage2: '', 
@@ -90,6 +85,13 @@ export default {
   },
   mounted () {
     this.setMemo();
+  },
+  computed: {
+    // 算出 getter 関数
+    reversedMessage: function () {
+      // `this` は vm インスタンスを指します
+      return this.setMemo
+    }
   },
   methods: {
     setMemo: function () {
@@ -99,9 +101,6 @@ export default {
       ))
     },
     addMemo: function() {
-      this.errorMessage1 = ''
-      this.errorMessage2 = ''
-      if(this.title != '' && this.description != ''){
         axios.post('/api/memos', {
           title: this.title,
           description: this.description
@@ -111,20 +110,17 @@ export default {
         ));
         this.title = ''
         this.description = ''
-      }else{
-        if(!this.title){
-          this.errorMessage1 = 'タイトルを入力して下さい'
-        }
-        if(!this.description){
-          this.errorMessage2 = '本文を入力して下さい'
-        }
-      } 
     },
     deleteMemo(id){
       if (window.confirm("NO." + id + "を本当に削除しますか？")) {
         axios.delete("/api/memos/" + id)  
       } 
       window.location.reload(); 
+    },
+    add(post) {
+      this.title=post.title;
+      this.description=post.description;
+      this.addMemo()
     }
   }
 }
