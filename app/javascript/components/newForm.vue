@@ -5,7 +5,7 @@
 			<div class="errorMessage">{{ errorMessage1 }}</div>
 		</div>
 		<div class="form-group">
-			<input v-model="post.description" placeholder="本文" class="form-control">
+			<textarea v-model="post.description" placeholder="本文" class="form-control"></textarea>
 			<div class="errorMessage">{{ errorMessage2 }}</div>
 		</div>
 		<button @click="send">メモを追加</button>

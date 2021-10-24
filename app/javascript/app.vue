@@ -8,7 +8,7 @@
           <div class="card-title">  
             {{ memo.id }}.{{ memo.title }}
           </div>
-          <div>{{ memo.description }}</div>
+          <div style="white-space:pre-line;">{{ memo.description }}</div>
           <div>{{ formatDate(memo.created_at) }}</div>
           <div><button @click="openModal(memo)">編集</button></div>
           <div><button @click="deleteMemo(memo.id)">削除</button></div>
