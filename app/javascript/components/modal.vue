@@ -5,7 +5,7 @@
         <div class="modal-container">
           <p>
             タイトル：<br />
-          	<input type="text" name="title" v-model="formObject.title"  size="50"><br />
+          	<input class="input" type="text" name="title" v-model="formObject.title"  size="50"><br />
           </p>
 					<p>
             本文：<br />
@@ -54,9 +54,14 @@ export default {
 </script>
 
 <style scoped>
+.input{
+	width: 360px;
+	height: 2em;
+	font-size:15px;	
+}
 .text_area{
 	width: 360px;
-	height: 5em;
+	height: 4em;
 	font-size:15px;	
 }
 .font{
