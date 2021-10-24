@@ -24,21 +24,21 @@ export default {
         }
     },
     methods: {
-        send: function () {
-            this.errorMessage1 = ''
-            this.errorMessage2 = ''
-            if(this.post.title != '' && this.post.description != ''){
-                this.$emit('panretMessage', this.post)
-                this.post.title = ''
-                this.post.description = ''
-            } else {
-                if(!this.post.title){
-                    this.errorMessage1 = 'タイトルを入力して下さい'
-                }
-                if(!this.post.description){
-                    this.errorMessage2 = '本文を入力して下さい'
-                }
-            }
+      	send: function () {
+        	this.errorMessage1 = ''
+        	this.errorMessage2 = ''
+        	if(this.post.title != '' && this.post.description != ''){
+              this.$emit('panretMessage', this.post)
+              this.post.title = ''
+              this.post.description = ''
+        	} else {
+              if(!this.post.title){
+                  this.errorMessage1 = 'タイトルを入力して下さい'
+              }
+              if(!this.post.description){
+                  this.errorMessage2 = '本文を入力して下さい'
+              }
+          }
         },
     }
 }
