@@ -44,10 +44,14 @@ export default {
 	},
 	methods:{
 		update(){
-			this.$emit('panretMessage', this.formObject)
-			this.post.title = ''
-			this.post.description = ''
-			this.$emit('close') 
+			if(this.formObject.title != '' && this.formObject.description != ''){
+				this.$emit('panretMessage', this.formObject)
+				this.post.title = ''
+				this.post.description = ''
+				this.$emit('close')
+			}else{
+				alert('両方のカラムに入力して下さい')
+			}
 		}
 	}
 }

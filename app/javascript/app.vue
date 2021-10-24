@@ -9,7 +9,7 @@
             {{ memo.id }}.{{ memo.title }}
           </div>
           <div style="white-space:pre-line;">{{ memo.description }}</div>
-          <div>{{ formatDate(memo.created_at) }}</div>
+          <div>{{ formatDate(memo.created_at) }}　{{ memo.description.length }}文字</div>
           <div><button @click="openModal(memo)">編集</button></div>
           <div><button @click="deleteMemo(memo.id)">削除</button></div>
         </div>
@@ -71,8 +71,8 @@ export default {
       window.location.reload(); 
     },
     add(post) {
-      this.title=post.title;
-      this.description=post.description;
+      this.title = post.title;
+      this.description = post.description;
       this.addMemo()
     },
     openModal(item) {
@@ -103,27 +103,6 @@ p {
 }
 </style>
 <style lang="scss" scoped>
-  .errorMessage {
-    color:red;
-  }
-  .form {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   margin: 32px;
-   &-group {
-     margin-bottom: 1rem;
-   }
-   &-control {
-     width: 600px;
-     min-height: 24px;
-     font-size: 1rem;
-     border: 1px solid #ced4da;
-     padding: 4px 8px;
-   }
-  }
-
   button {
     width: 200px;
   }
@@ -135,7 +114,7 @@ p {
   }
 
   .card {
-    width: 238px;
+    width: 400px;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
     margin: 16px;
