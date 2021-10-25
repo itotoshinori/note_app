@@ -24,7 +24,11 @@ class Api::MemosController < ApplicationController
 
   def destroy
     memo = Memo.find(params[:id])
-    memo.destroy
+    if memo.destroy
+      render json: { status: 'SUCCESS', message: 'Deleted the post', data: @memo }
+    else
+      render json: '削除に失敗しました', status: 500
+    end
   end
  
   private
