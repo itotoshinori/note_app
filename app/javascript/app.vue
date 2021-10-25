@@ -82,12 +82,15 @@ export default {
     update(post){
       this.title = post.title 
       this.description = post.description
+      this.showModal = false
       axios.put('/api/memos/'+post.id, {
         title: post.title,
         description: post.description
       })
-      //this.showModal = false;
-      window.location.reload();
+      .then(response => (
+        this.setMemo() 
+      ));
+      //window.location.reload();
     },
     closeModal() {
       this.showModal = false;
