@@ -1,10 +1,11 @@
 <template>
     <div class="form">
+			<div class="form-group">
+				<input v-model="post.title" placeholder="タイトル(１６文字以内）" class="form-control">
+				<div class="errorMessage">{{ errorMessage1 }}</div>
+			</div>
 		<div class="form-group">
-			<input v-model="post.title" placeholder="タイトル" class="form-control">
-			<div class="errorMessage">{{ errorMessage1 }}</div>
-		</div>
-		<div class="form-group">
+			<div class="errorMessage" v-if="post.description.length > 100">{{ post.description.length }}文字</div>
 			<textarea v-model="post.description" placeholder="本文" class="form-control"></textarea>
 			<div class="errorMessage">{{ errorMessage2 }}</div>
 		</div>
@@ -27,17 +28,20 @@ export default {
 		send: function () {
 			this.errorMessage1 = ''
 			this.errorMessage2 = ''
-			if(this.post.title != '' && this.post.description != ''){
+			if(this.post.title != '' && this.post.description != '' && this.post.title.length<=16){
 					this.$emit('panretMessage', this.post)
 					this.post.title = ''
 					this.post.description = ''
 			} else {
-					if(!this.post.title){
-							this.errorMessage1 = 'タイトルを入力して下さい'
-					}
-					if(!this.post.description){
-							this.errorMessage2 = '本文を入力して下さい'
-					}
+				if(this.post.title.length>16){
+						this.errorMessage1 = 'タイトルは16文字以下でお願いします'
+				}
+				if(!this.post.title){
+						this.errorMessage1 = 'タイトルを入力して下さい'
+				}
+				if(!this.post.description){
+						this.errorMessage2 = '本文を入力して下さい'
+				}
 			}
 		},
 	}
@@ -52,7 +56,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 32px;
+  margin: 20px;
   &-group {
      margin-bottom: 1rem;
   }

@@ -128,7 +128,7 @@ p {
   }
   @media (max-width: 1020px) and (min-width: 768px) { 
     .card {
-      width: 600px;
+      width: 95%;
     }
   }
 </style>

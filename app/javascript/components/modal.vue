@@ -8,7 +8,7 @@
           	<input class="input" type="text" name="title" v-model="formObject.title"  size="50"><br />
           </p>
 					<p>
-            本文：<br />
+            本文：<span class="font" v-if="formObject.description.length > 100">{{ formObject.description.length }}文字</span><br />
           	<textarea class="text_area" name="description" v-model="formObject.description" ></textarea><br />
           </p>
 		    	<button @click="update">
@@ -44,7 +44,7 @@ export default {
 	},
 	methods:{
 		update(){
-			if(this.formObject.title != '' && this.formObject.description != ''){
+			if(this.formObject.title != '' && this.formObject.title.length <=16 && this.formObject.description != ''){
 				this.$emit('panretMessage', this.formObject)
 				this.post.title = ''
 				this.post.description = ''
@@ -59,12 +59,12 @@ export default {
 
 <style scoped>
 .input{
-	width: 360px;
+	width: 80%;
 	height: 2em;
 	font-size:15px;	
 }
 .text_area{
-	width: 360px;
+	width: 80%;
 	height: 4em;
 	font-size:15px;	
 }
