@@ -9,7 +9,9 @@
             {{ memo.id }}.{{ memo.title }}
           </div>
           <div style="white-space:pre-line;">{{ memo.description }}</div>
-          <div>{{ formatDate(memo.created_at) }}　{{ memo.description.length }}文字</div>
+          <div>{{ formatDate(memo.created_at) }}　{{ memo.description.length }}文字
+            <span v-if="memo.link"><a :href="memo.link" target="_blank">リンク</a></span>
+          </div>
           <div><button @click="openModal(memo)">編集</button></div>
           <div><button @click="deleteMemo(memo.id)">削除</button></div>
         </div>
@@ -37,6 +39,7 @@ export default {
       message:'',
       message2:'',
       description: '',
+      link:'',
       errorMessage1: '',
       errorMessage2: '',
       showModal:false,
@@ -55,13 +58,15 @@ export default {
     addMemo: function() {
       axios.post('/api/memos', {
         title: this.title,
-        description: this.description
+        description: this.description,
+        link: this.link
       })
       .then(response => (
         this.setMemo()
       ));
       this.title = ''
       this.description = ''
+      this.link = ''
     },
     deleteMemo(id){
       if (window.confirm("NO." + id + "を本当に削除しますか？")) {
@@ -73,6 +78,7 @@ export default {
     add(post) {
       this.title = post.title;
       this.description = post.description;
+      this.link = post.link
       this.addMemo()
     },
     openModal(item) {
@@ -82,10 +88,12 @@ export default {
     update(post){
       this.title = post.title 
       this.description = post.description
+      this.link = post.link
       this.showModal = false
       axios.put('/api/memos/'+post.id, {
         title: post.title,
-        description: post.description
+        description: post.description,
+        link:post.link
       })
       .then(response => (
         this.setMemo() 

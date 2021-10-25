@@ -10,5 +10,12 @@ export default {
             let dateHour = moment(date).format("HH時mm分")
             return dateDis + " (" + WeekChars[wDay] + ") " + dateHour
         },
+        urlCheck(link) {
+            if (link.slice(0, 4) == 'http' || link == '') {
+                return true
+            } else {
+                return false
+            }
+        }
     }
 }
