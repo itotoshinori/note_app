@@ -29,7 +29,9 @@
 </template>
 
 <script>
+import utilsMixin from "utilities";
 export default {
+	mixins: [utilsMixin],
 	name: 'Modal',
 	props: {
 		// 受け取る属性名を指定
@@ -50,14 +52,14 @@ export default {
 	},
 	methods:{
 		update(){
-			if(this.formObject.title != '' && this.formObject.title.length <=16 && this.formObject.description != ''){
+			if(this.formObject.title != '' && this.formObject.title.length <=16 && this.formObject.description != '' && this.urlCheck(this.formObject.link)){
 				this.$emit('panretMessage', this.formObject)
 				this.post.title = ''
 				this.post.description = ''
 				this.post.link = ''
 				this.$emit('close')
 			}else{
-				alert('両方のカラムに入力して下さい')
+				alert('両方のカラムに入力、リンクカラムはURLの入力をお願いします')
 			}
 		}
 	}

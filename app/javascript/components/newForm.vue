@@ -43,7 +43,7 @@ export default {
 					this.post.description = ''
 					this.post.link = ''
 			} else {
-				if(this.post.title.length>16){
+				if(this.post.title.length > 16){
 					this.errorMessage1 = 'タイトルは16文字以下でお願いします'
 				}
 				if(!this.post.title){
