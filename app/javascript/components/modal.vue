@@ -124,7 +124,7 @@ export default {
 	}
 	.text_area{
 		width: 90%;
-		height: 16em;
+		height: 8em;
 		font-size:14px;	
 	}
 }
