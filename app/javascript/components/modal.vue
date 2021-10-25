@@ -61,12 +61,12 @@ export default {
 .input{
 	width: 80%;
 	height: 2em;
-	font-size:15px;	
+	font-size:12px;	
 }
 .text_area{
 	width: 80%;
-	height: 4em;
-	font-size:15px;	
+	height: 6em;
+	font-size:14px;	
 }
 .font{
 	color: red;
