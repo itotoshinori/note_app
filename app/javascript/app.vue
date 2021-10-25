@@ -67,7 +67,7 @@ export default {
       if (window.confirm("NO." + id + "を本当に削除しますか？")) {
         axios.delete("/api/memos/" + id) 
       } 
-      this.setMemo()
+      //this.setMemo()
       window.location.reload(); 
     },
     add(post) {
