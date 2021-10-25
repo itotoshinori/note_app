@@ -68,7 +68,7 @@ export default {
 .input{
 	width: 80%;
 	height: 2em;
-	font-size:12px;	
+	font-size:14px;	
 }
 .text_area{
 	width: 80%;
@@ -114,6 +114,16 @@ export default {
 		box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
 		transition: all .3s ease;
 		font-family: Helvetica, Arial, sans-serif;
+	}
+	.input{
+		width: 90%;
+		height: 2em;
+		font-size:16px;	
+	}
+	.text_area{
+		width: 90%;
+		height: 16em;
+		font-size:14px;	
 	}
 }
 @media (max-width: 767px) {
