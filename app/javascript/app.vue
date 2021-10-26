@@ -7,7 +7,7 @@
       <div v-for="memo in memos" :key="memo.id" class="card">
         <div class="card-bodyz1">
           <div style="white-space:pre-line;">{{ memo.description }}</div>
-          <div>NO.{{memo.id}}　{{ formatDate(memo.created_at) }}　{{ memo.description.length }}文字
+          <div>NO.{{memo.id}} {{ formatDate(memo.created_at) }} {{ memo.description.length }}字
             <span v-if="memo.link"><a :href="memo.link" target="_blank">リンク</a></span>
           </div>
           <div>
@@ -105,8 +105,8 @@ export default {
         description +
         "&hashtags=駆け出しエンジニアと繋がりたい";
       if (link) {
-        description = description + " " + link;
-        this.formObject.link = link;
+        content = content + " " + link;
+        this.link = link;
       }
       window.open(content, "_blank");
     },
