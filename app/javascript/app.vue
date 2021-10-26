@@ -3,6 +3,7 @@
     <NewForm @panretMessage="add"></NewForm>
     <modal :val="postItem" v-if="showModal" @panretMessage="update" @close="closeModal"></modal>
     <div class="flex">
+      {{ message }}
       <div v-for="memo in memos" :key="memo.id" class="card">
         <div class="card-bodyz1">
           <div style="white-space:pre-line;">{{ memo.description }}</div>
@@ -36,8 +37,6 @@ export default {
       message2:'',
       description: '',
       link:'',
-      errorMessage1: '',
-      errorMessage2: '',
       showModal:false,
     }
   },
@@ -70,7 +69,7 @@ export default {
       window.location.reload(); 
     },
     add(post) {
-      this.description = post.description;
+      this.description = post.description
       this.link = post.link
       this.addMemo()
     },

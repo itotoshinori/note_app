@@ -47,13 +47,13 @@ export default {
 	},
 	methods:{
 		update(){
-			if(this.formObject.description != '' && this.urlCheck(this.formObject.link)){
+			if(this.formObject.description != '' && this.post.description.length<=130 && this.urlCheck(this.formObject.link)){
 				this.$emit('panretMessage', this.formObject)
 				this.post.description = ''
 				this.post.link = ''
 				this.$emit('close')
 			}else{
-				alert('本文に文字入力もしくはリンクカラムはURLの入力をお願いします')
+				alert('130文字以下で本文に文字入力もしくはリンクカラムはURLの入力をお願いします')
 			}
 		}
 	}
