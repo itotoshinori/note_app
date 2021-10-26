@@ -12,10 +12,10 @@
           	<input class="input" type="text" name="link" v-model="formObject.link"  size="50"><br />
           </div>
 					<br />
-		    	<button @click="update">
+		    	<button @click="update" class="button_color_blue">
                 OK
           </button>
-          <button @click="$emit('close')">
+          <button @click="$emit('close')" class="button_color_orange">
                 Close
           </button>
         </div>
@@ -102,6 +102,18 @@ export default {
 	transition: all .3s ease;
 	font-family: Helvetica, Arial, sans-serif;
 }
+button{
+	width:100px;
+	height: 30px;
+}
+.button_color_blue{
+	  background: blue;
+	  color:white;
+}
+.button_color_orange{
+	  background: orange;
+	  color:white;
+}
 @media (max-width: 1020px) and (min-width: 768px) { 
 	.modal-container {
 		width: 80%;
@@ -125,5 +137,6 @@ export default {
 		font-size:14px;
 		background:white;
 	}
+
 }
 </style>

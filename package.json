@@ -9,6 +9,7 @@
     "axios": "^0.23.0",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.14",
+    "vue-clipboard2": "^0.3.3",
     "vue-head": "^2.2.0",
     "vue-loader": "^15.9.8",
     "vue-moment": "^4.1.0",

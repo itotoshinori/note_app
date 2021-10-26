@@ -11,8 +11,8 @@
 				<div class="errorMessage">{{ errorMessage3 }}</div>
 			</div>
 			<div class="form-group">	
-				<button @click="send">メモを追加</button>
-				<button @click="reset">リセット</button>
+				<button @click="send" class="button_color_orange">メモを追加</button>
+				<button @click="reset" class="button_color_red">リセット</button>
 			</div>
 		</div>
 	</div>
@@ -100,9 +100,7 @@ export default {
 .form-group{
 	margin-bottom: 10px;
 }
-button {
-  width: 200px;
-}
+
 @media (max-width: 1020px) and (min-width: 768px) {
 	.box {
     padding: 0.5em 1em;
@@ -111,5 +109,17 @@ button {
 		margin: auto;
 	}
 }
+button {
+  width: 100px;
+}
+.button_color_orange{
+	background: orange;
+	color:white;
+}
+.button_color_red{
+	background: red;
+	color:white;
+}
+
 </style>
 
