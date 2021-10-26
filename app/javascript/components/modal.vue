@@ -70,7 +70,8 @@ export default {
 .text_area{
 	width: 80%;
 	height: 4em;
-	font-size:14px;	
+	font-size:14px;
+	background:white;	
 }
 .font{
 	color: red;
@@ -115,12 +116,14 @@ export default {
 	.input{
 		width: 90%;
 		height: 2em;
-		font-size:16px;	
+		font-size:16px;
+		background:white;
 	}
 	.text_area{
 		width: 90%;
 		height: 6em;
-		font-size:14px;	
+		font-size:14px;
+		background:white;
 	}
 }
 </style>
