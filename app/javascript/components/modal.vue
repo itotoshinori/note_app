@@ -3,10 +3,6 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-          <div>
-            タイトル：<br />
-          	<input class="input" type="text" name="title" v-model="formObject.title"  size="50"><br />
-          </div>
 					<div>
             本文：<span class="font" v-if="formObject.description.length > 100">{{ formObject.description.length }}文字</span><br />
           	<textarea class="text_area" name="description" v-model="formObject.description" ></textarea><br />
@@ -41,7 +37,6 @@ export default {
 		return{
 			formObject: {
 				'name': this.val.name, 
-				'title':this.val.title,
 				'description':this.val.description,
 				'link':this.val.link,
 				'id':this.val.id,
@@ -52,14 +47,13 @@ export default {
 	},
 	methods:{
 		update(){
-			if(this.formObject.title != '' && this.formObject.title.length <=16 && this.formObject.description != '' && this.urlCheck(this.formObject.link)){
+			if(this.formObject.description != '' && this.urlCheck(this.formObject.link)){
 				this.$emit('panretMessage', this.formObject)
-				this.post.title = ''
 				this.post.description = ''
 				this.post.link = ''
 				this.$emit('close')
 			}else{
-				alert('両方のカラムに入力、リンクカラムはURLの入力をお願いします')
+				alert('本文に文字入力もしくはリンクカラムはURLの入力をお願いします')
 			}
 		}
 	}

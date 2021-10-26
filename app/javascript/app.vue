@@ -5,9 +5,6 @@
     <div class="flex">
       <div v-for="memo in memos" :key="memo.id" class="card">
         <div class="card-bodyz1">
-          <div class="card-title">  
-            {{ memo.id }}.{{ memo.title }}
-          </div>
           <div style="white-space:pre-line;">{{ memo.description }}</div>
           <div>{{ formatDate(memo.created_at) }}　{{ memo.description.length }}文字
             <span v-if="memo.link"><a :href="memo.link" target="_blank">リンク</a></span>
@@ -35,7 +32,6 @@ export default {
   data: function () {
     return {
       memos: "memos",
-      title: '',
       message:'',
       message2:'',
       description: '',
@@ -57,14 +53,12 @@ export default {
     },
     addMemo: function() {
       axios.post('/api/memos', {
-        title: this.title,
         description: this.description,
         link: this.link
       })
       .then(response => (
         this.setMemo()
       ));
-      this.title = ''
       this.description = ''
       this.link = ''
     },
@@ -76,7 +70,6 @@ export default {
       window.location.reload(); 
     },
     add(post) {
-      this.title = post.title;
       this.description = post.description;
       this.link = post.link
       this.addMemo()
@@ -86,12 +79,10 @@ export default {
       this.showModal = true;
     },
     update(post){
-      this.title = post.title 
       this.description = post.description
       this.link = post.link
       this.showModal = false
       axios.put('/api/memos/'+post.id, {
-        title: post.title,
         description: post.description,
         link:post.link
       })
