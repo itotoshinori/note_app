@@ -47,7 +47,7 @@ export default {
 	},
 	methods:{
 		update(){
-			if(this.formObject.description != '' && this.post.description.length<=130 && this.urlCheck(this.formObject.link)){
+			if(this.formObject.description != '' && this.formObject.description.length<=130 && this.urlCheck(this.formObject.link)){
 				this.$emit('panretMessage', this.formObject)
 				this.post.description = ''
 				this.post.link = ''
