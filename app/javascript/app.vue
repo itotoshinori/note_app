@@ -5,17 +5,20 @@
     <div class="flex">
       {{ message }}
       <div v-for="memo in memos" :key="memo.id" class="card">
-        <div class="card-bodyz1">
+        <div class="card-body" v-bind:class="{ 'important-active' : memo.important }">
           <div style="white-space:pre-line;">{{ memo.description }}</div>
           <div>NO.{{memo.id}} {{ formatDate(memo.created_at) }} {{ memo.description.length }}字
             <span v-if="memo.link"><a :href="memo.link" target="_blank">リンク</a></span>
           </div>
+          <diV>
+            <input type="checkbox" name="important" :checked="memo.important" @change="updateChecked(memo)"/>重要
+          </diV>
           <div>
             <button @click="openModal(memo)" class="button_color_add">編集</button>
             <button @click="deleteMemo(memo.id)" class="button_color_delete">削除</button>
             <button @click="toTwitter(memo.description,memo.link)" class="button_color_twitter">twitterへ</button>
             <button @click="copyToClipboard(memo.description)" class="button_color_copy">コピー</button>
-            <button @click="checkWording(memo.description)" class="button_color_dowording" alt="別サイトが開きますので文言コピーしてご活用下さい">文言確認</button>
+            <button @click="checkWording(memo.description)" class="button_color_dowording">文言確認</button>
           </div>
         </div>
       </div>
@@ -46,7 +49,9 @@ export default {
       message2:'',
       description: '',
       link:'',
+      important:'',
       showModal:false,
+      memo:''
     }
   },
   mounted () {
@@ -89,6 +94,7 @@ export default {
     update(post){
       this.description = post.description
       this.link = post.link
+      this.important = post.important
       this.showModal = false
       axios.put('/api/memos/'+post.id, {
         description: post.description,
@@ -97,7 +103,20 @@ export default {
       .then(response => (
         this.setMemo() 
       ));
-      //window.location.reload();
+    },
+    updateChecked(memo){
+      //alert(!memo.important)
+      this.description = memo.description
+      this.link = memo.link
+      this.important = !memo.important
+      axios.put('/api/memos/'+memo.id, {
+        description: memo.description,
+        link:memo.link,
+        important:!memo.important
+      })
+      .then(response => (
+        this.setMemo() 
+      ));
     },
     toTwitter( description, link ) {
       let content =
@@ -150,7 +169,7 @@ p {
     border-radius: .25rem;
     margin: 16px;
     &-body {
-      padding: 1.25rem;
+      padding: 0.7rem;
     }
     &-title {
       margin-bottom: .75rem;
@@ -163,7 +182,8 @@ p {
     }
   }
   button {
-    width: 70px;
+    width: 65px;
+    height: 30px;
   }
   .button_color_add{
 	  background: rgb(0, 68, 255);
@@ -184,5 +204,9 @@ p {
   .button_color_dowording{
 	  background: rgb(0, 255, 21);
 	  color:white;
+    font-size:10px;
+  }
+  .important-active {
+    background: #99FFCC;
   }
 </style>

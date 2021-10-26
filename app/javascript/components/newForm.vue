@@ -3,12 +3,12 @@
 		<div class="box">
 			<div class="form-group">
 				<div class="errorMessage" v-if="post.description.length > 100">{{ post.description.length }}文字(130文字以下）</div>
-				<textarea v-model="post.description" placeholder="本文" class="textarea-primary"></textarea>
-				<div class="errorMessage">{{ errorMessage2 }}</div>
+				<textarea v-model="post.description" placeholder="本文(130字以内)" class="textarea-primary"></textarea>
+				<div class="errorMessage">{{ errorMessage }}</div>
 			</div>
 			<div class="form-group">	
 				<input v-model="post.link" placeholder="リンク https://" class="input-primary">
-				<div class="errorMessage">{{ errorMessage3 }}</div>
+				<div class="errorMessage">{{ errorMessage2 }}</div>
 			</div>
 			<div class="form-group">	
 				<button @click="send" class="button_color_orange">メモを追加</button>
@@ -27,33 +27,33 @@ export default {
 					description: '',
 					link:'',
 			},
+			errorMessage: '',
 			errorMessage2: '',
-			errorMessage3: '',
 		}
 	},
 	methods: {
 		send: function () {
+			this.errorMessage = ''
 			this.errorMessage2 = ''
-			this.errorMessage3 = ''
 			if(this.post.description != ''&& this.post.description.length<=130 && this.urlCheck(this.post.link)){
 					this.$emit('panretMessage', this.post)
 					this.post.description = ''
 					this.post.link = ''
 			} else {
 				if(!this.post.description){
-					this.errorMessage2 = '本文を入力して下さい'
+					this.errorMessage = '本文を入力して下さい'
 				}
 				if(this.post.description.length>130){
-					this.errorMessage2 = '130文字を超えてます'
+					this.errorMessage = '130文字を超えてます'
 				}
 				if(this.urlCheck(this.post.link) == false){
-					this.errorMessage3 = 'URLを入力して下さい'
+					this.errorMessage2 = 'URLを入力して下さい'
 				}
 			}
 		},
 		reset: function (){
+			this.errorMessage = ''
 			this.errorMessage2 = ''
-			this.errorMessage3 = ''
 			this.post.description = ''
 			this.post.link = ''
 		}

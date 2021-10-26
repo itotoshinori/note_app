@@ -33,6 +33,6 @@ class Api::MemosController < ApplicationController
  
   private
     def memo_params
-      params.permit(:title, :description,:id,:link)
+      params.permit(:title,:description,:id,:link,:important)
     end
 end
