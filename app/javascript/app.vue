@@ -4,8 +4,8 @@
     <modal :val="postItem" v-if="showModal" @panretMessage="update" @close="closeModal"></modal>
     <div class="flex">
       {{ message }}
-      <div v-for="memo in memos" :key="memo.id" class="card">
-        <div class="card-body" v-bind:class="{ 'important-active' : memo.important }">
+      <div v-for="memo in memos" :key="memo.id" class="card" v-bind:class="{ 'important-active' : memo.important }">
+        <div class="card-body">
           <div style="white-space:pre-line;">{{ memo.description }}</div>
           <div>NO.{{memo.id}} {{ formatDate(memo.created_at) }} {{ memo.description.length }}字
             <span v-if="memo.link"><a :href="memo.link" target="_blank">リンク</a></span>
