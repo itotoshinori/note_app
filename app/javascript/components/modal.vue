@@ -122,16 +122,4 @@ export default {
 		font-size:14px;	
 	}
 }
-@media (max-width: 767px) {
-	.modal-container {
-		width: 95%;
-		margin: 0px auto;
-		padding: 20px 10px;
-		background-color:rgb(214, 243, 220);
-		border-radius: 2px;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-		transition: all .3s ease;
-		font-family: Helvetica, Arial, sans-serif;
-	}
-}
 </style>
