@@ -7,16 +7,18 @@
       <div v-for="memo in memos" :key="memo.id" class="card" v-bind:class="{ 'important-active' : memo.important }">
         <div class="card-body">
           <div style="white-space:pre-line;">{{ memo.description }}</div>
-          <div>NO.{{memo.id}} {{ formatDate(memo.created_at) }} {{ memo.description.length }}字
-            <span v-if="memo.link"><a :href="memo.link" target="_blank">リンク</a></span>
+            <div>NO.{{memo.id}} {{ formatDate(memo.created_at) }} {{ memo.description.length }}字
+              <span v-if="memo.link"><a :href="memo.link" target="_blank">リンク</a></span>
+            
+            </div>
+          <div class="checkbox-group">
+            <input type="checkbox" name="important" :checked="memo.important" @change="updateChecked(memo)" />
+            <label for="banana">重要</label>
           </div>
-          <diV>
-            <input type="checkbox" name="important" :checked="memo.important" @change="updateChecked(memo)"/>重要
-          </diV>
-          <div>
+          <div class="input-checkbox">
             <button @click="openModal(memo)" class="button_color_add">編集</button>
             <button @click="deleteMemo(memo.id)" class="button_color_delete">削除</button>
-            <button @click="toTwitter(memo.description,memo.link)" class="button_color_twitter">twitterへ</button>
+            <button @click="toTwitter(memo.description,memo.link)" class="button_color_twitter">twitter</button>
             <button @click="copyToClipboard(memo.description)" class="button_color_copy">コピー</button>
             <button @click="checkWording(memo.description)" class="button_color_dowording">文言確認</button>
           </div>
@@ -171,16 +173,21 @@ p {
     &-body {
       padding: 0.7rem;
     }
-    &-title {
-      margin-bottom: .75rem;
-      font-weight: 600;
+  }
+  @media (max-width: 1020px) and (min-width: 768px) {
+    .card{
+      width:95%;
+    }
+    .checkbox-group{
+      margin:20px;
+      font-size:35px;
+    }
+    input[type=checkbox] {
+	    transform: scale(3);
+	    margin: 0 5px 0 0;
     }
   }
-  @media (max-width: 1020px) and (min-width: 768px) { 
-    .card {
-      width: 95%;
-    }
-  }
+    
   button {
     width: 65px;
     height: 30px;
