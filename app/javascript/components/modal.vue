@@ -64,7 +64,8 @@ export default {
 .input{
 	width: 80%;
 	height: 2em;
-	font-size:14px;	
+	font-size:14px;
+	background:white;
 }
 .text_area{
 	width: 80%;
