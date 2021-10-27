@@ -21,11 +21,12 @@
           <div class="input-checkbox">
             <button @click="openModal(memo)" class="button_color_add">編集</button>
             <button @click="deleteMemo(memo.id)" class="button_color_delete">削除</button>
-            <span v-if="memo.twitter">
-              <button @click="toTwitter(memo.description,memo.link)" class="button_color_twitter">twitter</button>
+            <button @click="copyToClipboard(memo.description, memo.link)" class="button_color_copy">コピー</button>
+            <span v-if="memo.twitter"> 
+              <button @click="checkWording(memo.description)" class="button_color_dowording">文言確認</button>
+              <button @click="toTwitter(memo.description, memo.link)" class="button_color_twitter">twitter</button>
             </span>
-            <button @click="copyToClipboard(memo.description)" class="button_color_copy">コピー</button>
-            <button @click="checkWording(memo.description)" class="button_color_dowording">文言確認</button>
+            
           </div>
         </div>
       </div>
@@ -161,7 +162,10 @@ export default {
       }
       window.open(content, "_blank");
     },
-    copyToClipboard(text) {
+    copyToClipboard(text,link) {
+      if(link){
+        text = text + " " + link
+      }
       this.$copyText(text).then(function (e) {
         alert('本文をコピーしました')
         console.log(e)
