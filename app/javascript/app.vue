@@ -12,11 +12,11 @@
             </div>
           <div class="checkbox-group">
             <input type="checkbox" name="important" :checked="memo.important" @change="updateChecked(memo,1)" />
-            <label for="important">重要</label>
+            <label for="important"><span class="label_content">重要</span></label>
             <input type="checkbox" name="complete" :checked="memo.complete" @change="updateChecked(memo,2)" />
-            <label for="complete">完了</label>
+            <label for="complete"><span class="label_content">完了&nbsp;</span></label>
             <input type="checkbox" name="twitter" :checked="memo.twitter" @change="updateChecked(memo,3)" />
-            <label for="twitter">twitter</label>
+            <label for="twitter"><span class="label_content">twitter</span>&nbsp;</label>
           </div>
           <div class="input-checkbox">
             <button @click="openModal(memo)" class="button_color_add">編集</button>
@@ -214,7 +214,10 @@ p {
     }
     input[type=checkbox] {
 	    transform: scale(3);
-	    margin: 0 5px 0 20px;
+	    margin: 0 5px 0 0;
+    }
+    .label_content{
+      margin:0 10px 0 10px;
     }
   } 
   button {
