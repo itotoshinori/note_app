@@ -9,16 +9,21 @@
           <div style="white-space:pre-line;">{{ memo.description }}</div>
             <div>NO.{{memo.id}} {{ formatDate(memo.created_at) }} {{ memo.description.length }}字
               <span v-if="memo.link"><a :href="memo.link" target="_blank">リンク</a></span>
-            
             </div>
           <div class="checkbox-group">
-            <input type="checkbox" name="important" :checked="memo.important" @change="updateChecked(memo)" />
-            <label for="banana">重要</label>
+            <input type="checkbox" name="important" :checked="memo.important" @change="updateChecked(memo,1)" />
+            <label for="important">重要</label>
+            <input type="checkbox" name="complete" :checked="memo.complete" @change="updateChecked(memo,2)" />
+            <label for="complete">完了</label>
+            <input type="checkbox" name="twitter" :checked="memo.twitter" @change="updateChecked(memo,3)" />
+            <label for="twitter">twitter</label>
           </div>
           <div class="input-checkbox">
             <button @click="openModal(memo)" class="button_color_add">編集</button>
             <button @click="deleteMemo(memo.id)" class="button_color_delete">削除</button>
-            <button @click="toTwitter(memo.description,memo.link)" class="button_color_twitter">twitter</button>
+            <span v-if="memo.twitter">
+              <button @click="toTwitter(memo.description,memo.link)" class="button_color_twitter">twitter</button>
+            </span>
             <button @click="copyToClipboard(memo.description)" class="button_color_copy">コピー</button>
             <button @click="checkWording(memo.description)" class="button_color_dowording">文言確認</button>
           </div>
@@ -52,6 +57,7 @@ export default {
       description: '',
       link:'',
       important:'',
+      complete:'',
       showModal:false,
       memo:''
     }
@@ -114,15 +120,31 @@ export default {
         this.setMemo() 
       ));
     },
-    updateChecked(memo){
+    updateChecked(memo,num){
       //alert(!memo.important)
       this.description = memo.description
       this.link = memo.link
-      this.important = !memo.important
+      if(num == 1){
+        this.important = !memo.important
+      }else{
+        this.important = memo.important
+      }
+      if(num == 2){
+        this.complete = !memo.complete
+      }else{
+        this.complete = memo.complete
+      }
+      if(num == 3){
+        this.twitter = !memo.twitter
+      }else{
+        this.twitter = memo.twitter
+      }
       axios.put('/api/memos/'+memo.id, {
         description: memo.description,
         link:memo.link,
-        important:!memo.important
+        important:this.important,
+        complete:this.complete,
+        twitter:this.twitter
       })
       .then(response => (
         this.setMemo() 

@@ -3,4 +3,8 @@ json.title       @memo.title
 json.description @memo.description
 json.link @memo.link
 json.important @memo.important
+json.complete @memo.complete
+json.twitter @memo.twitter
+json.public @memo.public
+json.user_id @memo.user_id
 json.created_at @memo.created_at
