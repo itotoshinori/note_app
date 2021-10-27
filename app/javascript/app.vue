@@ -214,10 +214,9 @@ p {
     }
     input[type=checkbox] {
 	    transform: scale(3);
-	    margin: 0 5px 0 0;
+	    margin: 0 5px 0 20px;
     }
-  }
-    
+  } 
   button {
     width: 65px;
     height: 30px;
