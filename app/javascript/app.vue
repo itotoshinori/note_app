@@ -8,25 +8,25 @@
         <div class="card-body">
           <div style="white-space:pre-line;">{{ memo.description }}</div>
             <div>NO.{{memo.id}} {{ formatDate(memo.created_at) }} {{ memo.description.length }}字
-              <span v-if="memo.link"><a :href="memo.link" target="_blank">リンク</a></span>
+              <span v-if="memo.link"><a :href="memo.link" target="_blank">Link</a></span>
             </div>
-          <div class="checkbox-group">
-            <input type="checkbox" name="important" :checked="memo.important" @change="updateChecked(memo,1)" />
-            <label for="important"><span class="label_content">重要</span></label>
-            <input type="checkbox" name="complete" :checked="memo.complete" @change="updateChecked(memo,2)" />
-            <label for="complete"><span class="label_content">完了&nbsp;</span></label>
-            <input type="checkbox" name="twitter" :checked="memo.twitter" @change="updateChecked(memo,3)" />
-            <label for="twitter"><span class="label_content">twitter</span>&nbsp;</label>
-          </div>
-          <div class="input-checkbox">
-            <button @click="openModal(memo)" class="button_color_add">編集</button>
-            <button @click="deleteMemo(memo.id)" class="button_color_delete">削除</button>
-            <button @click="copyToClipboard(memo.description, memo.link)" class="button_color_copy">コピー</button>
-            <span v-if="memo.twitter"> 
-              <button @click="checkWording(memo.description)" class="button_color_dowording">文言確認</button>
-              <button @click="toTwitter(memo.description, memo.link)" class="button_color_twitter">twitter</button>
-            </span>
-            
+            <div class="checkbox-group">
+              <input type="checkbox" name="important" :checked="memo.important" @change="updateChecked(memo,1)" />
+              <label for="important"><span class="label_content">重要</span></label>
+              <input type="checkbox" name="complete" :checked="memo.complete" @change="updateChecked(memo,2)" />
+              <label for="complete"><span class="label_content">完了&nbsp;</span></label>
+              <input type="checkbox" name="twitter" :checked="memo.twitter" @change="updateChecked(memo,3)" />
+              <span class="label_content">twitter</span>
+            </div>
+            <div class="input-checkbox">
+              <button @click="openModal(memo)" class="button_color_add">編集</button>
+              <button @click="deleteMemo(memo.id)" class="button_color_delete">削除</button>
+              <button @click="copyToClipboard(memo.description, memo.link)" class="button_color_copy">コピー</button>
+              <span v-if="memo.twitter"> 
+                <button @click="checkWording(memo.description)" class="button_color_dowording">文言確認</button>
+                <button @click="toTwitter(memo.description, memo.link)" class="button_color_twitter">twitter</button>
+              </span> 
+            </div>
           </div>
         </div>
       </div>
@@ -122,7 +122,6 @@ export default {
       ));
     },
     updateChecked(memo,num){
-      //alert(!memo.important)
       this.description = memo.description
       this.link = memo.link
       if(num == 1){
@@ -214,14 +213,14 @@ p {
     }
     .checkbox-group{
       margin:20px;
-      font-size:35px;
     }
     input[type=checkbox] {
-	    transform: scale(3);
+	    transform: scale(2);
 	    margin: 0 5px 0 0;
     }
     .label_content{
       margin:0 10px 0 10px;
+      font-size:25px;
     }
   } 
   button {
