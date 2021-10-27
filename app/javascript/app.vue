@@ -253,12 +253,14 @@ p {
       }
     }
     input[type=checkbox] {
-	    transform: scale(2);
+	    transform: scale(1.5);
 	    margin: 0 6px 0 0;
+    }
+    .checkbox-group{
+      margin: 10px 20px 10px 0;
     }
     .label_content{
       font-size:16px;
-      margin: 10px 20px 20000px 0;
     }
   }
   @media screen and (min-width:1024px){
