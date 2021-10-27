@@ -18,7 +18,7 @@
               <input type="checkbox" name="twitter" :checked="memo.twitter" @change="updateChecked(memo,3)" />
               <span class="label_content">twitter</span>
             </div>
-            <div class="input-checkbox">
+            <div class="button-group">
               <button @click="openModal(memo)" class="button_color_add">編集</button>
               <button @click="deleteMemo(memo.id)" class="button_color_delete">削除</button>
               <button @click="copyToClipboard(memo.description, memo.link)" class="button_color_copy">コピー</button>
@@ -197,35 +197,12 @@ p {
     flex-wrap: wrap;
     justify-content: center;
   }
-
-  .card {
-    width: 400px;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-    margin: 16px;
-    &-body {
-      padding: 0.7rem;
-    }
-  }
-  @media (max-width: 1020px) and (min-width: 768px) {
-    .card{
-      width:95%;
-    }
-    .checkbox-group{
-      margin:20px;
-    }
-    input[type=checkbox] {
-	    transform: scale(2);
-	    margin: 0 5px 0 0;
-    }
-    .label_content{
-      margin:0 10px 0 10px;
-      font-size:25px;
-    }
-  } 
   button {
     width: 65px;
     height: 30px;
+  }
+  .button-group{
+    margin-top:20px;
   }
   .button_color_add{
 	  background: rgb(0, 68, 255);
@@ -251,4 +228,51 @@ p {
   .important-active {
     background: #99FFCC;
   }
+  @media screen and (min-width:480px) {
+    .card {
+      width: 90%;
+      border: 1px solid rgba(0,0,0,.125);
+      border-radius: .25rem;
+      margin: 16px;
+      &-body {
+      padding: 0.7rem;
+      //background-color: blue;どこがかかっているのか確認する
+      }
+    }
+  }
+  @media screen and (min-width:768px) and ( max-width:1024px) {
+    .card {
+      width: 90%;
+      border: 1px solid rgba(0,0,0,.125);
+      border-radius: .25rem;
+      margin: 16px;
+      &-body {
+      padding: 0.7rem;
+      //background-color: red;どこがかかっているのか確認する
+      }
+    }
+    input[type=checkbox] {
+	    transform: scale(2);
+	    margin: 0 6px 0 0;
+    }
+    .label_content{
+      font-size:20px;
+      margin: 10px 20px 20000px 0;
+    }
+  }
+  @media screen and (min-width:1024px){
+    .card {
+      width: 400px;
+      border: 1px solid rgba(0,0,0,.125);
+      border-radius: .25rem;
+      margin: 16px;
+      &-body {
+      padding: 0.7rem;
+      //background-color: aqua;どこがかかっているのか確認する
+      }
+    } 
+  }
+
+  
+  
 </style>

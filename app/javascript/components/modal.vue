@@ -137,6 +137,5 @@ button{
 		font-size:14px;
 		background:white;
 	}
-
 }
 </style>
