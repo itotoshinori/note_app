@@ -57,8 +57,16 @@ export default {
     }
   },
   mounted () {
+    setInterval(
+      function() {
+        this.setMemo(),
+        console.log('10秒後に処理')
+        }.bind(this),
+        10000
+      );       
     this.setMemo();
   },
+  
   methods: {
     setMemo: function () {
       axios.get('/api/memos')
