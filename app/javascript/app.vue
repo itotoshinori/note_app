@@ -246,9 +246,10 @@ p {
       border: 1px solid rgba(0,0,0,.125);
       border-radius: .25rem;
       margin: 16px;
+      font-size:20px;
       &-body {
       padding: 0.7rem;
-      //background-color: red;どこがかかっているのか確認する
+      //background-color: red;//どこがかかっているのか確認する
       }
     }
     input[type=checkbox] {
@@ -256,7 +257,7 @@ p {
 	    margin: 0 6px 0 0;
     }
     .label_content{
-      font-size:20px;
+      font-size:16px;
       margin: 10px 20px 20000px 0;
     }
   }
