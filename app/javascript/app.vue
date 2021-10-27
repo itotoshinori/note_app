@@ -246,7 +246,7 @@ p {
       border: 1px solid rgba(0,0,0,.125);
       border-radius: .25rem;
       margin: 16px;
-      font-size:25px;
+      font-size: 23px;
       &-body {
       padding: 0.7rem;
       //background-color: red;//どこがかかっているのか確認する
