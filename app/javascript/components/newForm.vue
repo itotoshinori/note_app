@@ -113,7 +113,7 @@ button {
   width: 100px;
 }
 .button_color_orange{
-	background: orange;
+	background: rgb(0, 89, 255);
 	color:white;
 }
 .button_color_red{
