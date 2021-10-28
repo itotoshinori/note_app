@@ -118,7 +118,7 @@ button{
 	.modal-container {
 		width: 90%;
 		margin: 0px auto;
-		padding: 20px 10px;
+		padding: 10px 10px;
 		background-color: bisque;
 		border-radius: 2px;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
@@ -128,12 +128,12 @@ button{
 	.input{
 		width: 90%;
 		height: 2em;
-		font-size:25px;
+		font-size:20px;
 		background:white;
 	}
 	.text_area{
 		width: 90%;
-		height: 5em;
+		height: 4em;
 		font-size:25px;
 		background:white;
 	}
