@@ -69,7 +69,7 @@ export default {
 }
 .text_area{
 	width: 80%;
-	height: 4em;
+	height: 5em;
 	font-size:14px;
 	background:white;	
 }
@@ -116,7 +116,7 @@ button{
 }
 @media (max-width: 1020px) and (min-width: 768px) { 
 	.modal-container {
-		width: 80%;
+		width: 90%;
 		margin: 0px auto;
 		padding: 20px 10px;
 		background-color: bisque;
@@ -133,7 +133,7 @@ button{
 	}
 	.text_area{
 		width: 90%;
-		height: 6em;
+		height: 5em;
 		font-size:25px;
 		background:white;
 	}
