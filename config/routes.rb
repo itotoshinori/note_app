@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'top/index'
+  get 'logout/logout'
   devise_for :users   
   get '/', to: 'home#index'
   namespace :api, format: 'json' do
