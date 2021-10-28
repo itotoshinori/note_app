@@ -21,9 +21,9 @@
             <div class="button-group">
               <button @click="openModal(memo)" class="button_color_add">編集</button>
               <button @click="deleteMemo(memo.id)" class="button_color_delete">削除</button>
-              <button @click="copyToClipboard(memo.description, memo.link)" class="button_color_copy">コピー</button>
+              <button @click="copyToClipboard(memo.description, memo.link)" class="button_color_copy">Copy</button>
               <span v-if="memo.twitter"> 
-                <button @click="checkWording(memo.description)" class="button_color_dowording">文言確認</button>
+                <button @click="checkWording(memo.description)" class="button_color_check">Check</button>
                 <button @click="toTwitter(memo.description, memo.link)" class="button_color_twitter">twitter</button>
               </span> 
             </div>
@@ -198,11 +198,12 @@ p {
     justify-content: center;
   }
   button {
-    width: 65px;
+    width: 70px;
     height: 30px;
+    font-size:12px;
   }
   .button-group{
-    margin-top:20px;
+    margin-top:2px;
   }
   .button_color_add{
 	  background: rgb(0, 68, 255);
@@ -210,6 +211,10 @@ p {
   }
   .button_color_delete{
 	  background: red;
+	  color:white;
+  }
+  .button_color_check{
+	  background: rgb(0, 255, 128);
 	  color:white;
   }
   .button_color_twitter{
@@ -257,7 +262,7 @@ p {
 	    margin: 0 6px 0 0;
     }
     .checkbox-group{
-      margin: 10px 20px 10px 0;
+      margin: 10px 20px 1px 0;
     }
     .label_content{
       font-size:16px;
