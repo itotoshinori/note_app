@@ -128,13 +128,13 @@ button{
 	.input{
 		width: 90%;
 		height: 2em;
-		font-size:16px;
+		font-size:25px;
 		background:white;
 	}
 	.text_area{
 		width: 90%;
 		height: 6em;
-		font-size:14px;
+		font-size:25px;
 		background:white;
 	}
 }
