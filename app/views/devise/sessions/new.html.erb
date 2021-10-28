@@ -1,26 +1,46 @@
-<h2>Log in</h2>
 
+<div class="box6">
+    <h2>ログイン</h2>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input"%>
   </div>
-
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.label :password, class:"input" %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class:"input" %>
   </div>
-
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+  <%= f.submit "ログイン", class: 'btn btn-primary'%>
 <% end %>
-
+<br />
 <%= render "devise/shared/links" %>
+</div>
+
+
+
+
+<style>
+.box6 {
+    padding: 0.5em 1em;
+    margin: auto;
+    width:40%;
+    background: #f0f7ff;
+    border: dashed 2px #5b8bd0;/*点線*/
+}
+.box6 p {
+    margin: 0; 
+    padding: 0;
+}
+.input{
+  width:90%;
+}
+
+
+</style>
+
