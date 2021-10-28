@@ -1,7 +1,8 @@
 class Api::MemosController < ApplicationController
   protect_from_forgery except: [:create, :update]
+
 	def index
-    @memos = Memo.order('created_at DESC')
+    @memos = Memo.order('created_at DESC') if current_user.present?
   end
 	
 	def create

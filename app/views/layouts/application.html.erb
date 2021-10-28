@@ -11,6 +11,13 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if current_user.present? %>
+      <p><%= current_user.name %>さん！</p>
+    <% else %>
+      <p>ゲストさん！</p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
