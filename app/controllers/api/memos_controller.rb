@@ -2,7 +2,21 @@ class Api::MemosController < ApplicationController
   protect_from_forgery except: [:create, :update]
 
 	def index
-    @memos = Memo.order('created_at DESC') if current_user.present?
+    if params[:description].present?
+      description = params[:description]
+    else
+      description = "%"
+    end
+    complete = params[:complete]
+    #debugger
+    if current_user.present?
+      if description.present?
+        @memos = Memo.order('created_at DESC').where("description LIKE ?", "%#{description}%")
+      end
+      if complete.present?
+        @memos = @memos.order('created_at DESC').where("complete = ?", false)
+      end
+    end
   end
 	
 	def create

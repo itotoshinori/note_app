@@ -24,8 +24,8 @@ export default {
 	data: function () {
 		return {
 			post: { 
-					description: '',
-					link:'',
+				description: '',
+				link:'',
 			},
 			errorMessage: '',
 			errorMessage2: '',

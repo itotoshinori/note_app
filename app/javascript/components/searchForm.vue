@@ -1,0 +1,88 @@
+<template>
+	<div class="form">
+		<div class="box">
+			<div class="form-group">	
+				<input v-model="post.searchWord" placeholder="検索ワード" class="input-primary">
+				<button @click="send" class="button_color_orange">検索</button><br />
+				<input type="checkbox" name="complete" v-model="post.searchUncomplete" @change="send" />
+    			<label for="complete"><span class="label_content">未完了&nbsp;</span></label>
+			</div>
+		</div>
+	</div>
+</template>
+<script>
+import utilsMixin from "utilities";
+export default {
+	mixins: [utilsMixin],
+	data: function () {
+		return {
+			post: { 
+				searchWord:'',
+				searchUncomplete:''
+			},
+		}
+	},
+	methods: {
+		send: function () {
+			//if(this.post.searchWord){
+				this.$emit('panretMessage', this.post)
+			//}
+		},
+	}
+}
+</script>
+<style lang="scss" scoped>
+.box {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+		width: 40%;
+		margin: auto;
+}
+.textarea-primary {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  max-height: 170px;
+	padding-left:2px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+  font-size: 18px;
+  outline: none;
+  line-height: 1.6;
+  resize: vertical;
+}
+.input-primary {
+  display: inline-block;
+  vertical-align: top;
+  width: 30%;
+  height: 30px;
+	padding-left:2px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+  font-size: 18px;
+  outline: none;
+  line-height: 1.6;
+}
+@media (max-width: 1020px) and (min-width: 768px) {
+	.box {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+		width: 90%;
+		margin: auto;
+	}
+}
+button {
+  width: 100px;
+}
+.button_color_orange{
+	background: rgb(0, 89, 255);
+	color:white;
+}
+.button_color_red{
+	background: red;
+	color:white;
+}
+</style>
+

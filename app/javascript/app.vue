@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <NewForm @panretMessage="add"></NewForm>
+    <hr />
+    <SearchForm @panretMessage="search"></SearchForm>
+    <hr />
     <modal :val="postItem" v-if="showModal" @panretMessage="update" @close="closeModal"></modal>
     <div class="flex">
-      {{ message }}
       <div v-for="memo in memos" :key="memo.id" class="card" v-bind:class="{ 'important-active' : memo.important }">
         <div class="card-body">
           <div style="white-space:pre-line;">{{ memo.description }}</div>
@@ -39,15 +41,16 @@ import Vue from 'vue'
 import axios from 'axios';
 import utilsMixin from "utilities";
 import NewForm from './components/newForm.vue';
+import SearchForm from './components/searchForm.vue';
 import modal from './components/modal.vue';
 import VueClipboard from 'vue-clipboard2'
-
 Vue.use(VueClipboard)
 
 export default {
   mixins: [utilsMixin],
   components: {
     NewForm,
+    SearchForm,
     modal
   },
   data: function () {
@@ -60,26 +63,38 @@ export default {
       important:'',
       complete:'',
       showModal:false,
-      memo:''
+      memo:'',
+      searchWord:'',
+      searchUncomplete:''
     }
   },
   mounted () {
     setInterval(
       function() {
-        this.setMemo(),
-        console.log('10秒後に処理')
+        this.setMemo();
+        console.log('10秒後に実行');
         }.bind(this),
         10000
-      );       
-    this.setMemo();
+      );
+    this.setMemo(); 
   },
-  
   methods: {
     setMemo: function () {
-      axios.get('/api/memos')
+      let word = ''
+      if(this.searchWord){
+        word = '?description=' + this.searchWord
+      }
+      if(this.searchUncomplete){
+        if(word){
+          word = word + '&complete=false'
+        }else{
+          word = '?complete=false'
+        }
+      }
+      axios.get('/api/memos/' + word)
       .then(response => (
         this.memos = response.data
-      ))
+      ));
     },
     addMemo: function() {
       axios.post('/api/memos', {
@@ -103,6 +118,11 @@ export default {
       this.description = post.description
       this.link = post.link
       this.addMemo()
+    },
+    search:function(post){
+      this.searchWord = post.searchWord
+      this.searchUncomplete = post.searchUncomplete
+      this.setMemo()
     },
     openModal(item) {
       this.postItem = item;
