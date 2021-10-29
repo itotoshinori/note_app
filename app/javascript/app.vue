@@ -93,11 +93,11 @@ export default {
       this.link = ''
     },
     deleteMemo(id){
-      if (window.confirm("NO." + id + "を本当に削除しますか？")) {
-        axios.delete("/api/memos/" + id) 
+      if (window.confirm("NO." + id + "を本当に削除しますか？※削除すれば画面更新がかかります")) {
+        axios.delete("/api/memos/" + id)
+        window.location.reload(); 
       } 
       //this.setMemo()
-      window.location.reload(); 
     },
     add(post) {
       this.description = post.description
