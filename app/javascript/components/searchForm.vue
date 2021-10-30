@@ -3,7 +3,8 @@
 		<div class="box">
 			<div class="form-group">	
 				<input v-model="post.searchWord" placeholder="検索ワード" class="input-primary">
-				<button @click="send" class="button_color_orange">検索</button><br />
+				<button @click="send" class="button_color_orange">検索</button>
+				<button @click="reset" class="button_color_red">画面初期化</button><br />
 				<input type="checkbox" name="complete" v-model="post.searchUncomplete" @change="send" />
     			<label for="complete"><span class="label_content">未完了&nbsp;</span></label>
 			</div>
@@ -24,10 +25,12 @@ export default {
 	},
 	methods: {
 		send: function () {
-			//if(this.post.searchWord){
-				this.$emit('panretMessage', this.post)
-			//}
+			this.$emit('panretMessage', this.post)
 		},
+		reset: function () {
+			this.$emit('panretReset')
+		},
+		
 	}
 }
 </script>

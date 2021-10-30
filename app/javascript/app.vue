@@ -2,7 +2,7 @@
   <div id="app">
     <NewForm @panretMessage="add"></NewForm>
     <hr />
-    <SearchForm @panretMessage="search"></SearchForm>
+    <SearchForm @panretMessage="search" @panretReset="allReset"></SearchForm>
     <hr />
     <modal :val="postItem" v-if="showModal" @panretMessage="update" @close="closeModal"></modal>
     <div class="flex">
@@ -201,6 +201,9 @@ export default {
     closeModal() {
       this.showModal = false;
     },
+    allReset(){
+      window.location.reload();
+    }
   }
 }
 </script>
