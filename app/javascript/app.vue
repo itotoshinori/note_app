@@ -27,7 +27,7 @@
               <button @click="deleteMemo(memo.id)" class="button_color_delete">削除</button>
               <button @click="copyToClipboard(memo.description, memo.link)" class="button_color_copy">Copy</button>
               <span v-if="memo.public">
-                <button @click="checkWording(memo.description)" class="button_color_check">Check</button>
+                <button @click="checkWording(memo.id)" class="button_color_check">Check</button>
               </span> 
               <span v-if="memo.twitter"> 
                 <button @click="toTwitter(memo.description, memo.link)" class="button_color_twitter">twitter</button>
@@ -212,9 +212,10 @@ export default {
           console.log(e)
       })
     },
-    checkWording(text){
-      this.copyToClipboard(text)
-      let content = "https://so-zou.jp/web-app/text/proofreading/";
+    checkWording(id){   
+      //this.copyToClipboard(text)
+      //let content = "https://so-zou.jp/web-app/text/proofreading/";
+      let content = "https://so-zou.jp/web-app/text/proofreading/?url=https%3A%2F%2Fyoung-beach-72525.herokuapp.com%2Fmemos%2F" + id
       window.open(content, "_blank");
     },
     closeModal() {

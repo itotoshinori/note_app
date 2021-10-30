@@ -1,1 +1,3 @@
-<%=@memo.description %>
+<% if @memo.present? %>
+	<%=@memo.description %>
+<% end %>
