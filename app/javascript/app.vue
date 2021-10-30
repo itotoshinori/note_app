@@ -65,7 +65,8 @@ export default {
       showModal:false,
       memo:'',
       searchWord:'',
-      searchUncomplete:''
+      searchUncomplete:'',
+      upImportant:''
     }
   },
   mounted () {
@@ -89,6 +90,13 @@ export default {
           word = word + '&complete=false'
         }else{
           word = '?complete=false'
+        }
+      }
+      if(this.upImportant){
+        if(word){
+          word = word + '&upImportant=true'
+        }else{
+          word = '?upImportant=true'
         }
       }
       axios.get('/api/memos/' + word)
@@ -122,6 +130,7 @@ export default {
     search:function(post){
       this.searchWord = post.searchWord
       this.searchUncomplete = post.searchUncomplete
+      this.upImportant = post.upImportant
       this.setMemo()
     },
     openModal(item) {

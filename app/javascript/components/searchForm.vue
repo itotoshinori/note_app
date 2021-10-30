@@ -7,6 +7,8 @@
 				<button @click="reset" class="button_color_red">画面初期化</button><br />
 				<input type="checkbox" name="complete" v-model="post.searchUncomplete" @change="send" />
     			<label for="complete"><span class="label_content">未完了&nbsp;</span></label>
+				<input type="checkbox" name="complete" v-model="post.upImportant" @change="send" />
+    			<label for="complete"><span class="label_content">重要を上に&nbsp;</span></label>
 			</div>
 		</div>
 	</div>
@@ -19,7 +21,8 @@ export default {
 		return {
 			post: { 
 				searchWord:'',
-				searchUncomplete:''
+				searchUncomplete:'',
+				upImportant:''
 			},
 		}
 	},

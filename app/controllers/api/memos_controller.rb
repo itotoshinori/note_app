@@ -8,13 +8,20 @@ class Api::MemosController < ApplicationController
       description = "%"
     end
     complete = params[:complete]
+    upImportant = params[:upImportant]
     #debugger
     if current_user.present?
       if description.present?
-        @memos = Memo.order('created_at DESC').where("description LIKE ?", "%#{description}%")
+        @memos = Memo.where("description LIKE ?", "%#{description}%")
       end
       if complete.present?
-        @memos = @memos.order('created_at DESC').where("complete = ?", false)
+        @memos = @memos.where("complete = ?", false)
+      end
+      if upImportant.present?
+        #@memos = @memos.where("important = ?", true)
+        @memos = @memos.order('important DESC').order('created_at DESC')
+      else
+        @memos = @memos.order('created_at DESC')
       end
     end
   end
