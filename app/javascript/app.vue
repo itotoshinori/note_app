@@ -70,7 +70,8 @@ export default {
       memo:'',
       searchWord:'',
       searchUncomplete:'',
-      upImportant:''
+      upImportant:'',
+      searchTwitter:''
     }
   },
   mounted () {
@@ -101,6 +102,13 @@ export default {
           word = word + '&upImportant=true'
         }else{
           word = '?upImportant=true'
+        }
+      }
+      if(this.searchTwitter){
+        if(word){
+          word = word + '&searchTwitter=true'
+        }else{
+          word = '?searchTwitter=true'
         }
       }
       axios.get('/api/memos/' + word)
@@ -135,6 +143,7 @@ export default {
       this.searchWord = post.searchWord
       this.searchUncomplete = post.searchUncomplete
       this.upImportant = post.upImportant
+      this.searchTwitter = post.searchTwitter
       this.setMemo()
     },
     openModal(item) {

@@ -9,6 +9,8 @@
     			<label for="complete"><span class="label_content">未完了&nbsp;</span></label>
 				<input type="checkbox" name="complete" v-model="post.upImportant" @change="send" />
     			<label for="complete"><span class="label_content">重要を上に&nbsp;</span></label>
+				<input type="checkbox" name="twitter" v-model="post.searchTwitter" @change="send" />
+    			<label for="complete"><span class="label_content">twitter&nbsp;</span></label>
 			</div>
 		</div>
 	</div>
@@ -22,7 +24,8 @@ export default {
 			post: { 
 				searchWord:'',
 				searchUncomplete:'',
-				upImportant:''
+				upImportant:'',
+				searchTwitter:''
 			},
 		}
 	},

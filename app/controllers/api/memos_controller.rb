@@ -8,6 +8,8 @@ class Api::MemosController < ApplicationController
       description = "%"
     end
     complete = params[:complete]
+    twitter = params[:searchTwitter]
+
     upImportant = params[:upImportant]
     #debugger
     if current_user.present?
@@ -16,6 +18,9 @@ class Api::MemosController < ApplicationController
       end
       if complete.present?
         @memos = @memos.where("complete = ?", false)
+      end
+      if twitter.present?
+        @memos = @memos.where("twitter = ?", true)
       end
       if upImportant.present?
         #@memos = @memos.where("important = ?", true)
