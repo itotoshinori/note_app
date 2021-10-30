@@ -17,6 +17,8 @@
               <label for="important"><span class="label_content">重要</span></label>
               <input type="checkbox" name="complete" :checked="memo.complete" @change="updateChecked(memo,2)" />
               <label for="complete"><span class="label_content">完了&nbsp;</span></label>
+              <input type="checkbox" name="public" :checked="memo.public" @change="updateChecked(memo,4)" />
+              <label for="public"><span class="label_content">公開&nbsp;</span></label>
               <input type="checkbox" name="twitter" :checked="memo.twitter" @change="updateChecked(memo,3)" />
               <span class="label_content">twitter</span>
             </div>
@@ -24,8 +26,10 @@
               <button @click="openModal(memo)" class="button_color_add">編集</button>
               <button @click="deleteMemo(memo.id)" class="button_color_delete">削除</button>
               <button @click="copyToClipboard(memo.description, memo.link)" class="button_color_copy">Copy</button>
-              <span v-if="memo.twitter"> 
+              <span v-if="memo.public">
                 <button @click="checkWording(memo.description)" class="button_color_check">Check</button>
+              </span> 
+              <span v-if="memo.twitter"> 
                 <button @click="toTwitter(memo.description, memo.link)" class="button_color_twitter">twitter</button>
               </span> 
             </div>
@@ -168,12 +172,18 @@ export default {
       }else{
         this.twitter = memo.twitter
       }
+      if(num == 4){
+        this.public = !memo.public
+      }else{
+        this.public = memo.public
+      }
       axios.put('/api/memos/'+memo.id, {
         description: memo.description,
         link:memo.link,
         important:this.important,
         complete:this.complete,
-        twitter:this.twitter
+        twitter:this.twitter,
+        public:this.public
       })
       .then(response => (
         this.setMemo() 

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     :passwords => 'users/passwords'
   }
   get '/', to: 'home#index'
+  resources :memos, only: [:show]
   namespace :api, format: 'json' do
     resources :memos, only: [:index, :create, :destroy, :update]
   end
