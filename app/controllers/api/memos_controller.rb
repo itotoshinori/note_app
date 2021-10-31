@@ -30,7 +30,7 @@ class Api::MemosController < ApplicationController
         #@memos = @memos.where("important = ?", true)
         @memos = @memos.order('important DESC').order('created_at DESC')
       else
-        @memos = @memos.order('created_at DESC')
+        @memos = @memos.order('updated_at DESC')
       end
     end
   end
