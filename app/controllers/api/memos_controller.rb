@@ -10,9 +10,7 @@ class Api::MemosController < ApplicationController
     complete = params[:complete]
     twitter = params[:searchTwitter]
     link = params[:searchLink]
-
     upImportant = params[:upImportant]
-    #debugger
     if current_user.present?
       if description.present?
         @memos = Memo.where("description LIKE ?", "%#{description}%")
@@ -27,8 +25,7 @@ class Api::MemosController < ApplicationController
         @memos = @memos.where("link <> ?", '')
       end
       if upImportant.present? 
-        #@memos = @memos.where("important = ?", true)
-        @memos = @memos.order('important DESC').order('created_at DESC')
+        @memos = @memos.order('important DESC').order('updated_at DESC')
       else
         @memos = @memos.order('updated_at DESC')
       end
