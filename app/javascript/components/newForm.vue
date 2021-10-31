@@ -69,7 +69,7 @@ export default {
 			this.post.link = ''
 			this.post.important = false
 			this.post.complete = false
-			this.post.public = false
+			this.post.newPublic = false
 			this.post.twitter = false
 		}
 	}
