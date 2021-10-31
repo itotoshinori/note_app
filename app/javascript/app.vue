@@ -71,7 +71,8 @@ export default {
       searchWord:'',
       searchUncomplete:'',
       upImportant:'',
-      searchTwitter:''
+      searchTwitter:'',
+      searchLink:''
     }
   },
   mounted () {
@@ -111,6 +112,13 @@ export default {
           word = '?searchTwitter=true'
         }
       }
+      if(this.searchLink){
+        if(word){
+          word = word + '&searchLink=true'
+        }else{
+          word = '?searchLink=true'
+        }
+      }
       axios.get('/api/memos/' + word)
       .then(response => (
         this.memos = response.data
@@ -144,6 +152,7 @@ export default {
       this.searchUncomplete = post.searchUncomplete
       this.upImportant = post.upImportant
       this.searchTwitter = post.searchTwitter
+      this.searchLink = post.searchLink
       this.setMemo()
     },
     openModal(item) {
