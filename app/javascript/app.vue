@@ -105,6 +105,13 @@ export default {
           word = '?upImportant=true'
         }
       }
+      if(this.updateAt){
+        if(word){
+          word = word + '&updateAt=true'
+        }else{
+          word = '?updateAt=true'
+        }
+      }
       if(this.searchTwitter){
         if(word){
           word = word + '&searchTwitter=true'
@@ -151,6 +158,7 @@ export default {
       this.searchWord = post.searchWord
       this.searchUncomplete = post.searchUncomplete
       this.upImportant = post.upImportant
+      this.updateAt = post.updateAt
       this.searchTwitter = post.searchTwitter
       this.searchLink = post.searchLink
       this.setMemo()
