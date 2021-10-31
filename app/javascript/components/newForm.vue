@@ -54,7 +54,7 @@ export default {
 				if(!this.post.description){
 					this.errorMessage = '本文を入力して下さい'
 				}
-				if(this.post.description.length>130){
+				if(this.post.description.length > 130){
 					this.errorMessage = '130文字を超えてます'
 				}
 				if(this.urlCheck(this.post.link) == false){
