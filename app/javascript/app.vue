@@ -144,8 +144,6 @@ export default {
       .then(response => (
         this.setMemo()
       ));
-      this.description = ''
-      this.link = ''
     },
     deleteMemo(id){
       if (window.confirm("NO." + id + "を本当に削除しますか？※削除すれば画面更新がかかります")) {

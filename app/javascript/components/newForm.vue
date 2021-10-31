@@ -49,8 +49,7 @@ export default {
 			this.errorMessage2 = ''
 			if(this.post.description != ''&& this.post.description.length<=130 && this.urlCheck(this.post.link)){
 					this.$emit('panretMessage', this.post)
-					this.post.description = ''
-					this.post.link = ''
+					this.reset()
 			} else {
 				if(!this.post.description){
 					this.errorMessage = '本文を入力して下さい'
@@ -68,6 +67,10 @@ export default {
 			this.errorMessage2 = ''
 			this.post.description = ''
 			this.post.link = ''
+			this.post.important = false
+			this.post.complete = false
+			this.post.public = false
+			this.post.twitter = false
 		}
 	}
 }

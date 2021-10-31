@@ -97,11 +97,11 @@ button {
   width: 100px;
 }
 .button_color_orange{
-	background: rgb(0, 89, 255);
+	background:orange;
 	color:white;
 }
 .button_color_red{
-	background: red;
+	background:rebeccapurple;
 	color:white;
 }
 </style>
