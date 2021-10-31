@@ -13,7 +13,15 @@
 			<div class="form-group">	
 				<button @click="send" class="button_color_orange">メモを追加</button>
 				<button @click="reset" class="button_color_red">リセット</button>
-			</div>
+              	<input type="checkbox" name="important" v-model="post.important" @change="updateChecked(memo,1)" />
+              	<label for="important"><span class="label_content">重要</span></label>
+              	<input type="checkbox" name="complete" v-model="post.complete" @change="updateChecked(memo,2)" />
+              	<label for="complete"><span class="label_content">完了&nbsp;</span></label>
+              	<input type="checkbox" name="public" v-model="post.newPublic" @change="updateChecked(memo,4)" />
+              	<label for="public"><span class="label_content">公開&nbsp;</span></label>
+              	<input type="checkbox" name="twitter" v-model="post.twitter" @change="updateChecked(memo,3)" />
+              	<span class="label_content">twitter</span>
+            </div>
 		</div>
 	</div>
 </template>
@@ -26,6 +34,10 @@ export default {
 			post: { 
 				description: '',
 				link:'',
+				important:'',
+				complete:'',
+				newPublic:'',
+				twitter:''
 			},
 			errorMessage: '',
 			errorMessage2: '',

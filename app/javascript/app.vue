@@ -134,7 +134,11 @@ export default {
     addMemo: function() {
       axios.post('/api/memos', {
         description: this.description,
-        link: this.link
+        link: this.link,
+        important: this.important,
+				complete:this.complete,
+				public:this.public,
+				twitter:this.twitter
       })
       .then(response => (
         this.setMemo()
@@ -152,6 +156,10 @@ export default {
     add(post) {
       this.description = post.description
       this.link = post.link
+      this.important = post.important
+			this.complete = post.complete
+			this.public = post.newPublic
+			this.twitter = this.twitter
       this.addMemo()
     },
     search:function(post){
