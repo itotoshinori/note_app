@@ -4,7 +4,9 @@
 			<div class="form-group">	
 				<input v-model="post.searchWord" placeholder="検索ワード" class="input-primary">
 				<button @click="send" class="button_color_orange">検索</button>
-				<button @click="reset" class="button_color_red">画面初期化</button><br />
+				<button @click="reset" class="button_color_red">画面初期化</button>
+			</div>
+			<div>
 				<input type="checkbox" name="complete" v-model="post.searchUncomplete" @change="send" />
     			<label for="complete"><span class="label_content">未完了&nbsp;</span></label>
 				<input type="checkbox" name="complete" v-model="post.upImportant" @change="send" />
@@ -48,10 +50,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .form-group{
-	margin-bottom: -10px;
+	margin-bottom: 4px;
 }
 .box {
-    padding: 0.5em 1em;
+    padding: 0.5em 0;
     margin: 2em 0;
 	width: 40%;
 	margin: auto;
