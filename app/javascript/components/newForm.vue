@@ -34,10 +34,10 @@ export default {
 			post: { 
 				description: '',
 				link:'',
-				important:'',
-				complete:'',
-				newPublic:'',
-				twitter:''
+				important:false,
+				complete:false,
+				newPublic:false,
+				twitter:false
 			},
 			errorMessage: '',
 			errorMessage2: '',

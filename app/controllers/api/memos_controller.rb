@@ -17,7 +17,7 @@ class Api::MemosController < ApplicationController
         @memos = Memo.where("description LIKE ?", "%#{description}%")
       end
       if complete.present?
-        @memos = @memos.where(complete: false).or(@memos.where(complete: nil))
+        @memos = @memos.where("twitter = ?", false)
       end
       if twitter.present?
         @memos = @memos.where("twitter = ?", true)
