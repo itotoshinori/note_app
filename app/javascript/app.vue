@@ -66,6 +66,7 @@ export default {
       link:'',
       important:'',
       complete:'',
+      twitter:'',
       showModal:false,
       memo:'',
       searchWord:'',
@@ -159,7 +160,7 @@ export default {
       this.important = post.important
 			this.complete = post.complete
 			this.public = post.newPublic
-			this.twitter = this.twitter
+			this.twitter = post.twitter
       this.addMemo()
     },
     search:function(post){
