@@ -114,7 +114,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :user_name => 'apikey',
     :password => ENV['SENDGRID_APIKEY'],
-    :domain => 'young-beach-72525.herokuapp.com/',
+    :domain => 'young-beach-72525.herokuapp.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,
