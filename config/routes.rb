@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   namespace :api, format: 'json' do
     resources :memos, only: [:index, :create, :destroy, :update]
   end
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
