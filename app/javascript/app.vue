@@ -306,7 +306,7 @@ p {
     font-size:10px;
   }
   .important-active {
-    background: #99FFCC;
+    background: #f9efdd;
   }
   @media screen and (min-width:480px) {
     .card {
@@ -354,8 +354,5 @@ p {
       //background-color: aqua;どこがかかっているのか確認する
       }
     } 
-  }
-
-  
-  
+  }  
 </style>
