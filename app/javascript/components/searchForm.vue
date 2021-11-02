@@ -57,7 +57,7 @@ export default {
 	margin-bottom: 4px;
 }
 .box {
-    padding: 0.5em 0;
+  padding: 0.5em 0;
 	width: 37%;
 	margin: auto;
 }

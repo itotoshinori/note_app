@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div v-if = "message" class="message">{{ message }}</div>
+    <div v-if = "message" class="message"><h4>{{ message }}</h4></div>
     <NewForm @panretMessage="add"></NewForm>
     <SearchForm @panretMessage="search" @panretReset="allReset"></SearchForm>
     <modal :val="postItem" v-if="showModal" @panretMessage="update" @close="closeModal"></modal>
@@ -284,8 +284,9 @@ p {
 <style lang="scss" scoped>
   .message{
     padding: 0.5em 1em;
-    background-color: white;
+    background-color: #f7f7f7;
     text-align: center;
+    font-size: 20px;
   }
   .flex {
     display: flex;
