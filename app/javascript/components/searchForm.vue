@@ -49,13 +49,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.form{
+	background-color: #f4fffc;
+	padding-top:10px;
+}
 .form-group{
 	margin-bottom: 4px;
 }
 .box {
     padding: 0.5em 0;
-    margin: 2em 0;
-	width: 40%;
+	width: 37%;
 	margin: auto;
 }
 .textarea-primary {

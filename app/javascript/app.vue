@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <NewForm @panretMessage="add"></NewForm>
-    <hr />
     <SearchForm @panretMessage="search" @panretReset="allReset"></SearchForm>
-    <hr />
     <modal :val="postItem" v-if="showModal" @panretMessage="update" @close="closeModal"></modal>
     <div class="flex">
       <div v-for="memo in memos" :key="memo.id" class="card" v-bind:class="{ 'important-active' : memo.important }">
@@ -37,7 +35,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </template>
 </template>
 
 <script>
@@ -272,6 +270,7 @@ p {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: #ffffe3;
   }
   button {
     width: 70px;

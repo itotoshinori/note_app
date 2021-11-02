@@ -9,9 +9,13 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <div style="height:50px; text-align:center;">
-      <span class="notice" style="color:blue"><%= notice %></span>
-      <span class="alert" style="color:red"><%= alert %></span>
+    <div class="seting">
+      <% if notice.present? %>
+       <span class="notice" style="color:blue"><%= notice %></span>
+      <% end %>
+      <% if alert.present? %>
+        <span class="alert" style="color:red"><%= alert %></span>
+      <% end %>
       <% if current_user.present? %>
         <p><%= current_user.name %>さんでログイン中 
         <%= link_to "ログアウト", logout_logout_path, method: :get %></p>
@@ -22,3 +26,10 @@
     <%= yield %>
   </body>
 </html>
+<style>
+.seting{
+  background-color: #f7f7f7;
+  padding-top:10px;
+  height:40px; text-align:center;
+}
+</style>

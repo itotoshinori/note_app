@@ -76,6 +76,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.form{
+	background-color: #f7f7f7;
+	padding-top:10px;
+}
 .box {
     padding: 0.5em 1em;
     margin: 2em 0;
