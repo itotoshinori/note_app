@@ -7,7 +7,7 @@
       <div v-for="memo in memos" :key="memo.id" class="card" v-bind:class="{ 'important-active' : memo.important }">
         <div class="card-body">
           <div style="white-space:pre-line;">{{ memo.description }}</div>
-            <div>NO.{{memo.id}} {{ formatDate(memo.created_at) }} {{ memo.description.length }}字{{ memo.user_id }}
+            <div>NO.{{memo.id}} {{ formatDate(memo.created_at) }} {{ memo.description.length }}字
               <span v-if="memo.link"><a :href="memo.link" target="_blank">Link</a></span>
             </div>
             <div class="checkbox-group">
