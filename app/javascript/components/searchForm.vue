@@ -78,7 +78,7 @@ export default {
 .input-primary {
   display: inline-block;
   vertical-align: top;
-  width: 30%;
+  width: 40%;
   height: 30px;
 	padding-left:2px;
   box-sizing: border-box;
