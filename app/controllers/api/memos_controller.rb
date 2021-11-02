@@ -13,9 +13,7 @@ class Api::MemosController < ApplicationController
     upImportant = params[:upImportant]
     updateAt = params[:updateAt]
     if current_user.present?
-      if description.present?
-        @memos = Memo.where("description LIKE ?", "%#{description}%")
-      end
+      @memos = Memo.where("description LIKE ? and user_id = ?", "%#{description}%",current_user.id)
       if complete.present?
         @memos = @memos.where("complete = ?", false)
       end
