@@ -18,8 +18,8 @@ class Api::MemosController < ApplicationController
       end
       if complete.present?
         #@memos = @memos.where(complete: false).or(@memos.where(complete: nil))
-        @memos = @memos.where(complete: nil)
-        #@memos = @memos.where("complete = ?", nil)
+        #@memos = @memos.where(complete: nil)
+        @memos = @memos.where("complete = ?", false)
       end
       if twitter.present?
         @memos = @memos.where("twitter = ?", true)
