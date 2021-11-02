@@ -81,10 +81,10 @@ export default {
 	padding-top:10px;
 }
 .box {
-    padding: 0.5em 1em;
-    margin: 2em 0;
-		width: 40%;
-		margin: auto;
+  padding: 0.5em 1em;
+  margin: 2em 0;
+	width: 40%;
+	margin: auto;
 }
 .textarea-primary {
   display: inline-block;

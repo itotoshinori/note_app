@@ -3,21 +3,21 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-					<div>
+			<div>
             本文：<span class="font" v-if="formObject.description.length > 100">{{ formObject.description.length }}文字</span><br />
           	<textarea class="text_area" name="description" v-model="formObject.description" ></textarea><br />
-          </div>
-					<div>
+        </div>
+		<div>
             リンク：<br />
           	<input class="input" type="text" name="link" v-model="formObject.link"  size="50"><br />
-          </div>
+        </div>
 					<br />
-		    	<button @click="update" class="button_color_blue">
+		<button @click="update" class="button_color_blue">
                 OK
-          </button>
-          <button @click="$emit('close')" class="button_color_orange">
+        </button>
+        <button @click="$emit('close')" class="button_color_orange">
                 Close
-          </button>
+        </button>
         </div>
       </div>
     </div>

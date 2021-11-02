@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div v-if = "message" class="message">{{ message }}</div>
     <NewForm @panretMessage="add"></NewForm>
     <SearchForm @panretMessage="search" @panretReset="allReset"></SearchForm>
     <modal :val="postItem" v-if="showModal" @panretMessage="update" @close="closeModal"></modal>
@@ -29,7 +30,7 @@
               </span> 
               <span v-if="memo.twitter"> 
                 <button @click="toTwitter(memo.description, memo.link)" class="button_color_twitter">twitter</button>
-              </span> 
+              </span>
             </div>
           </div>
         </div>
@@ -140,15 +141,22 @@ export default {
 				twitter:this.twitter
       })
       .then(response => (
-        this.setMemo()
-      ));
+        this.setMemo(),
+        this.message = "メッセージの登録に成功しました"
+      ))
+      .catch((err) => {
+        const message = err.response.data
+        this.message = "メッセージの登録に失敗しました"
+      })
     },
     deleteMemo(id){
       if (window.confirm("NO." + id + "を本当に削除しますか？※削除すれば画面更新がかかります")) {
-        axios.delete("/api/memos/" + id)
-        window.location.reload(); 
+        if(axios.delete("/api/memos/" + id)){
+          window.location.reload();
+        }else{
+          this.message = "削除に失敗しました"
+        } 
       } 
-      //this.setMemo()
     },
     add(post) {
       this.description = post.description
@@ -182,8 +190,13 @@ export default {
         link:post.link
       })
       .then(response => (
-        this.setMemo() 
-      ));
+        this.setMemo(),
+        this.message = "更新に成功しました"
+      ))
+      .catch((err) => {
+        const message = err.response.data
+        this.message = "更新に失敗しました"
+      })
     },
     updateChecked(memo,num){
       this.description = memo.description
@@ -208,7 +221,7 @@ export default {
       }else{
         this.public = memo.public
       }
-      axios.put('/api/memos/'+memo.id, {
+      axios.put('/api/memos/'+ memo.id, {
         description: memo.description,
         link:memo.link,
         important:this.important,
@@ -217,8 +230,13 @@ export default {
         public:this.public
       })
       .then(response => (
-        this.setMemo() 
-      ));
+        this.setMemo(),
+        this.message = "更新に成功しました"
+      ))
+      .catch((err) => {
+        const message = err.response.data
+        this.message = "更新に失敗しました"
+      })
     },
     toTwitter( description, link ) {
       let content =
@@ -239,13 +257,11 @@ export default {
         alert('本文をコピーしました')
         console.log(e)
       }, function (e) {
-        alert('Can not copy')
+        alert('コピーできません')
           console.log(e)
       })
     },
     checkWording(id){   
-      //this.copyToClipboard(text)
-      //let content = "https://so-zou.jp/web-app/text/proofreading/";
       let content = "https://so-zou.jp/web-app/text/proofreading/?url=https%3A%2F%2Fyoung-beach-72525.herokuapp.com%2Fmemos%2F" + id
       window.open(content, "_blank");
     },
@@ -266,6 +282,11 @@ p {
 }
 </style>
 <style lang="scss" scoped>
+  .message{
+    padding: 0.5em 1em;
+    background-color: white;
+    text-align: center;
+  }
   .flex {
     display: flex;
     flex-wrap: wrap;
