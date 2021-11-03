@@ -79,6 +79,7 @@ export default {
 .form{
 	background-color: #f7f7f7;
 	padding-top:10px;
+	margin-bottom:-10px;
 }
 .box {
   padding: 0.5em 1em;
