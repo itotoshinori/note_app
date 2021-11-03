@@ -11,17 +11,15 @@
 				<div class="errorMessage">{{ errorMessage2 }}</div>
 			</div>
 			<div class="form-group">	
-				<button @click="send" class="button_color_orange">メモを追加</button>
+				<button @click="send" class="button_color_orange">追加</button>
 				<button @click="reset" class="button_color_red">リセット</button>
-              	<input type="checkbox" name="important" v-model="post.important" @change="updateChecked(memo,1)" />
-              	<label for="important"><span class="label_content">重要</span></label>
-              	<input type="checkbox" name="complete" v-model="post.complete" @change="updateChecked(memo,2)" />
-              	<label for="complete"><span class="label_content">完了&nbsp;</span></label>
-              	<input type="checkbox" name="public" v-model="post.newPublic" @change="updateChecked(memo,4)" />
-              	<label for="public"><span class="label_content">公開&nbsp;</span></label>
-              	<input type="checkbox" name="twitter" v-model="post.twitter" @change="updateChecked(memo,3)" />
-              	<span class="label_content">twitter</span>
-            </div>
+        <input type="checkbox" name="important" v-model="post.important" />
+        <label for="important"><span class="label_content">重要</span></label>
+        <input type="checkbox" name="public" v-model="post.newPublic" />
+        <label for="public"><span class="label_content">公開&nbsp;</span></label>
+        <input type="checkbox" name="twitter" v-model="post.twitter" />
+        <span class="label_content">twitter</span>
+      </div>
 		</div>
 	</div>
 </template>
@@ -35,7 +33,6 @@ export default {
 				description: '',
 				link:'',
 				important:false,
-				complete:false,
 				newPublic:false,
 				twitter:false
 			},
@@ -68,7 +65,6 @@ export default {
 			this.post.description = ''
 			this.post.link = ''
 			this.post.important = false
-			this.post.complete = false
 			this.post.newPublic = false
 			this.post.twitter = false
 		}
@@ -120,9 +116,16 @@ export default {
 .form-group{
 	margin-bottom: 10px;
 }
-
+@media screen and (min-width:480px) and (max-width:768px){
+.box {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+	width: 90%;
+	margin: auto;
+	}
+}
 @media (max-width: 1020px) and (min-width: 768px) {
-	.box {
+.box {
     padding: 0.5em 1em;
     margin: 2em 0;
 		width: 90%;
@@ -130,7 +133,7 @@ export default {
 	}
 }
 button {
-  width: 100px;
+  width: 90px;
 }
 .button_color_orange{
 	background: rgb(0, 89, 255);
@@ -140,6 +143,5 @@ button {
 	background: red;
 	color:white;
 }
-
 </style>
 

@@ -10,13 +10,13 @@
 				<input type="checkbox" name="complete" v-model="post.searchUncomplete" @change="send" />
     			<label for="complete"><span class="label_content">未完了&nbsp;</span></label>
 				<input type="checkbox" name="complete" v-model="post.upImportant" @change="send" />
-    			<label for="complete"><span class="label_content">重要を上に&nbsp;</span></label>
+    			<label for="complete"><span class="label_content">重要順&nbsp;</span></label>
 				<input type="checkbox" name="updateAt" v-model="post.updateAt" @change="send" />
     			<label for="complete"><span class="label_content">更新降順&nbsp;</span></label>
 				<input type="checkbox" name="twitter" v-model="post.searchTwitter" @change="send" />
     			<label for="complete"><span class="label_content">twitter&nbsp;</span></label>
 				<input type="checkbox" name="link" v-model="post.searchLink" @change="send" />
-    			<label for="complete"><span class="label_content">リンクあり&nbsp;</span></label>
+    			<label for="complete"><span class="label_content">リンク&nbsp;</span></label>
 			</div>
 		</div>
 	</div>
@@ -89,11 +89,11 @@ export default {
   line-height: 1.6;
 }
 @media (max-width: 1020px) and (min-width: 768px) {
-	.box {
+.box {
     padding: 0.5em 1em;
     margin: 2em 0;
-		width: 90%;
-		margin: auto;
+	width: 90%;
+	margin: auto;
 	}
 }
 button {

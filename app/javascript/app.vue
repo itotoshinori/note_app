@@ -136,7 +136,6 @@ export default {
         description: this.description,
         link: this.link,
         important: this.important,
-				complete:this.complete,
 				public:this.public,
 				twitter:this.twitter
       })
@@ -162,7 +161,6 @@ export default {
       this.description = post.description
       this.link = post.link
       this.important = post.important
-			this.complete = post.complete
 			this.public = post.newPublic
 			this.twitter = post.twitter
       this.addMemo()
