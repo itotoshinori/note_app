@@ -12,7 +12,7 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super
-    MemoMailer.creation_email("ログインがありました",'',"ログインユーザー：#{current_user.name}").deliver_now #if current_user.id != 1
+    MemoMailer.creation_email("ログインがありました",'',"ユーザー：#{current_user.name}").deliver_now #if current_user.id != 1
   end
 
   # DELETE /resource/sign_out

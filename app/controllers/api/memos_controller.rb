@@ -38,7 +38,7 @@ class Api::MemosController < ApplicationController
     @memo = Memo.new(memo_params)
     @memo.user_id = current_user.id
     if @memo.save
-      MemoMailer.creation_email("メモに追加投稿がありました",@memo.description,"#{current_user.name}さんから").deliver_now #if current_user.id != 1
+      MemoMailer.creation_email("新規投稿がありました",@memo.description,"#{current_user.name}さんから").deliver_now #if current_user.id != 1
       render :show, status: :created
     else
       render json: @memo.errors, status: :unprocessable_entity

@@ -4,7 +4,7 @@ class MemoMailer < ApplicationMailer
     @content = content
     @user_name = user
     mail(
-      subject: "メモアプリからの投稿のお知らせ",
+      subject: "メモアプリからのお知らせ",
       to: "tito40358@outlook.jp"
     )
   end
