@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <div v-if = "message" class="message"><h4>{{ message }}</h4></div>
     <NewForm @panretMessage="add"></NewForm>
+    <div class="message"><div v-if = "message" class="message-box">{{ message }}</div></div>
     <SearchForm @panretMessage="search" @panretReset="allReset"></SearchForm>
     <modal :val="postItem" v-if="showModal" @panretMessage="update" @close="closeModal"></modal>
     <div class="flex">
@@ -282,17 +282,22 @@ p {
 }
 </style>
 <style lang="scss" scoped>
-  .message{
-    padding: 0.5em 1em;
-    background-color: #f7f7f7;
-    text-align: center;
-    font-size: 20px;
-  }
   .flex {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     background-color: #ffffe3;
+  }
+  .message{
+    background-color: #f7f7f7;
+  }
+  .message-box{
+    border: 2px;
+    padding:2px;
+    width: 38%;
+	  margin: auto;
+    font-size:20px;
+    background-color: #f7f7f7;
   }
   button {
     width: 70px;
@@ -343,6 +348,14 @@ p {
     }
   }
   @media screen and (min-width:768px) and ( max-width:1024px) {
+    .message-box{
+      border: 2px;
+      padding:2px;
+      width: 88%;
+	    margin: auto;
+      font-size:20px;
+      background-color: #f7f7f7;
+    }
     .card {
       width: 90%;
       border: 1px solid rgba(0,0,0,.125);
