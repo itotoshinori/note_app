@@ -182,13 +182,14 @@ export default {
       this.description = post.description
       this.link = post.link
       this.important = post.important
-      this.showModal = false
+      //this.showModal = false
       axios.put('/api/memos/'+post.id, {
         description: post.description,
         link:post.link
       })
       .then(response => (
         this.setMemo(),
+        this.showModal = false,
         this.message = "更新に成功しました"
       ))
       .catch((err) => {
