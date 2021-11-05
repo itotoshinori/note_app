@@ -4,7 +4,7 @@
       <div class="modal-wrapper">
         <div class="modal-container">
 			<div>
-            本文：<span class="font" v-if="formObject.description.length > 100">{{ formObject.description.length }}文字 {{ formObject.errorMessage1 }}</span><br />
+            本文：<span class="font" v-if="formObject.description.length > 100">{{ formObject.description.length }}文字</span><span class="font">{{ formObject.errorMessage1 }}</span><br />
           	<textarea class="text_area" name="description" v-model="formObject.description" ></textarea><br />
         </div>
 		<div>
@@ -47,18 +47,13 @@ export default {
 	},
 	methods:{
 		update(){
-			//if(this.formObject.description != '' && this.formObject.description.length <= 130 && this.urlCheck(this.formObject.link)){
 			this.$emit('panretMessage', this.formObject)
-			if(this.formObject.description.length > 130){
-				this.formObject.errorMessage1 = "130文字以下でお願いします"
+			if(this.formObject.description.length > 130 || !this.formObject.description){
+				this.formObject.errorMessage1 = "1以上130文字以下で入力をお願いします"
 			}
 			if(this.urlCheck(this.formObject.link) == false){
 				this.formObject.errorMessage2 = "URLでの入力をお願いします"
 			}
-
-			//}else{
-				//alert('130文字以下で本文に文字入力もしくはリンクカラムはURLの入力をお願いします')
-			//}
 		}
 	}
 }

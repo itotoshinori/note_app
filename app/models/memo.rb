@@ -1,5 +1,5 @@
 class Memo < ApplicationRecord
-  validates :description, presence: true
+  #validates :description, presence: true
   #本文１字から１３０字まで
   validates :description,
     length: { minimum: 1, maximum: 130 }
