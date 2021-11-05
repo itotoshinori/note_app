@@ -12,6 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #POST /resource
   def create
      super
+      MemoMailer.creation_email("新規ユーザー登録がありました",'',"ユーザー：#{current_user.name}").deliver_now if current_user.present?
   end
 
   #GET /resource/edit

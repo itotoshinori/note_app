@@ -8,4 +8,7 @@ class Memo < ApplicationRecord
   validates :twitter, presence: false
   validates :important, presence: false
   validates :user_id, presence: true
+  with_options if: :link? do
+    validates :link, format: /\A#{URI::regexp(%w(http https))}\z/
+  end
 end

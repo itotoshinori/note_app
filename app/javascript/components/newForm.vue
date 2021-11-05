@@ -44,19 +44,18 @@ export default {
 		send: function () {
 			this.errorMessage = ''
 			this.errorMessage2 = ''
-			if(this.post.description != ''&& this.post.description.length<=130 && this.urlCheck(this.post.link)){
-					this.$emit('panretMessage', this.post)
-					this.reset()
-			} else {
-				if(!this.post.description){
-					this.errorMessage = '本文を入力して下さい'
-				}
-				if(this.post.description.length > 130){
-					this.errorMessage = '130文字を超えてます'
-				}
-				if(this.urlCheck(this.post.link) == false){
-					this.errorMessage2 = 'URLを入力して下さい'
-				}
+			this.$emit('panretMessage', this.post)
+			if(!this.post.description){
+				this.errorMessage = '本文を入力して下さい'
+			}else if(this.post.description.length > 130){
+				this.errorMessage = '130文字を超えてます'
+			}
+			if(this.urlCheck(this.post.link) == false){
+				this.errorMessage2 = 'URLを入力して下さい'
+			}
+			if(this.errorMessage == '' & this.errorMessage2 == ''){
+				
+				this.reset()
 			}
 		},
 		reset: function (){
