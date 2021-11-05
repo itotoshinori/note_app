@@ -66,6 +66,7 @@ export default {
 			this.post.important = false
 			this.post.newPublic = false
 			this.post.twitter = false
+			this.$parent.message = ''
 		}
 	}
 }

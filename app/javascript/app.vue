@@ -58,7 +58,7 @@ export default {
   },
   data: function () {
     return {
-      memos: "memos",
+      memos: "",
       message:'',
       message2:'',
       description: '',
