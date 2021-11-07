@@ -3,9 +3,11 @@ class MemoMailer < ApplicationMailer
     @category = category
     @content = content
     @user_name = user
-    mail(
-      subject: "メモアプリからのお知らせ",
-      to: "tito40358@outlook.jp"
-    )
+    #send = mail(subject: "メモアプリからのお知らせ",to: "tito40358@outlook.jp")
+    if mail(subject: "メモアプリからのお知らせ",to: "tito40358@outlook.jp")
+      cotent_return = "送信成功"
+    else
+      cotent_return = "送信失敗"
+    end
   end
 end

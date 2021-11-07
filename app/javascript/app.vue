@@ -151,7 +151,9 @@ export default {
     deleteMemo(id){
       if (window.confirm("NO." + id + "を本当に削除しますか？※削除すれば画面更新がかかります")) {
         if(axios.delete("/api/memos/" + id)){
-          window.location.reload();
+          //window.location.reload();
+          this.setMemo()
+          this.message = "id:" + id + "に削除に成功しました"
         }else{
           this.message = "削除に失敗しました"
         } 
