@@ -51,8 +51,8 @@ class Api::MemosController < ApplicationController
   end
 
   def update
-    @memo = Memo.find(params[:id])
-    if @memo.update(memo_params) and @memo.user_id == current_user.id
+    @memo = Memo.find_by(id: params[:id], user_id: current_user.id)
+    if @memo.update(memo_params)
       render json: '更新に成功しました', status: 200
     else
       render json: '更新に失敗しました', status: 500
@@ -60,7 +60,7 @@ class Api::MemosController < ApplicationController
   end
 
   def destroy
-    memo = Memo.find(params[:id])
+    memo = Memo.find_by(id: params[:id], user_id: current_user.id)
     if memo.destroy
       render json: { status: 'SUCCESS', message: 'Deleted the post', data: @memo }
     else
