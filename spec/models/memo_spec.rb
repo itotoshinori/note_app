@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Memo, type: :model do
   before do
+    @user = FactoryBot.create(:user)
     @memo = Memo.new(description:"テスト投稿", important:false, complete:false,
-      twitter:false, public:false, user_id:1, link:nil)
+      twitter:false, public:false, user_id:@user.id, link:nil)
   end
   describe 'バリデーション' do
     it 'defaultの設定では　OK' do

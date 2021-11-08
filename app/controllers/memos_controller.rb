@@ -1,7 +1,6 @@
 class MemosController < ApplicationController
   def show
-    @memos = Memo.where("public = ?", true)
-    @memo = @memos.find(params[:id]) if @memos.present?
+    @memo = Memo.find_by(id:params[:id],public:true)
     render :layout => nil
   end
 end
