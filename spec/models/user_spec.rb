@@ -3,8 +3,6 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   before do
     @user = User.new(name:"test",email:"test@user.jp", password:"password")
-    #@user = build(:user)
-    #@user = create(:user)
   end
 
   describe 'バリデーション' do

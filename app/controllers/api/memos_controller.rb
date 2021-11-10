@@ -2,6 +2,7 @@ class Api::MemosController < ApplicationController
   protect_from_forgery except: [:create, :update, :destroy]
   before_action :authenticate_user!
   before_action :user_set, only: [:index,:new,:edit,:create]
+  before_action :user_admin, only: [:create]
 
 	def index
     if params[:description].present?
@@ -14,7 +15,7 @@ class Api::MemosController < ApplicationController
     link = params[:searchLink]
     upImportant = params[:upImportant]
     updateAt = params[:updateAt]
-    if @user.present?
+    if current_user.present?
       @memos = Memo.where("user_id = ?", current_user.id)
       if description.present?
         @memos = @memos.where("description LIKE ?", "%#{description}%")
@@ -43,7 +44,7 @@ class Api::MemosController < ApplicationController
     @memo = Memo.new(memo_params)
     @memo.user_id = current_user.id
     if @memo.save
-      MemoMailer.creation_email("新規投稿がありました",@memo.description,"#{current_user.name}さんから").deliver_now if current_user.id != 1
+      MemoMailer.creation_email(@user_admin.email,"新規投稿がありました",@memo.description,"#{current_user.name}さんから").deliver_now if current_user.id != @user_admin.id
       render :show, status: :created
     else
       render json: @memo.errors, status: :unprocessable_entity

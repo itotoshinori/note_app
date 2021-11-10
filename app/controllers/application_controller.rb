@@ -2,11 +2,10 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	def user_set
-    @user = current_user
-    if @user.blank?
-      flash[:warning] = "閲覧権限がありません"
-      redirect_to poems_path
-    end 
+    @now_user = current_user
+  end
+  def user_admin
+    @user_admin = User.first
   end
 	protected
   def configure_permitted_parameters

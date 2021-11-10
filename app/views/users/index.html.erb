@@ -1,0 +1,55 @@
+<div class="box6">
+<h4>ユーザー一覧</h4>
+<div id="ajax-dis" style="color:blue">
+</div>
+<div id="ajax-dis-delete" style="color:red">
+</div>
+<table class="design01">
+<% if current_user.present? %>
+  <% if @user_admin.id == current_user.id%>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td><td><%= user.name %></td><td><%= user.email %></td>
+      <td>
+        <span id="ajax-request">
+        <!-- form_withのパスを「ajax_updateアクション」に紐付ける -->
+        <%= form_with url: users_ajax_update_path do |f| %>
+        <!--  送信ボタン  -->
+          <%= f.hidden_field :data,value:user.id %>
+          <!--  直接URLを叩かれることを防止されるためにパスコードを設定  -->
+          <%= f.hidden_field :passcode,value:"7a3T67q" %>
+          <%= f.submit 'Reset' %>
+        <% end %>
+      </span>
+      </td>
+      <td>
+        <span id="ajax-request">
+        <!-- form_withのパスを「ajax_updateアクション」に紐付ける -->
+        <%= form_with url: users_ajax_delete_path do |f| %>
+        <!--  送信ボタン  -->
+          <%= f.hidden_field :data,value:user.id %>
+          <!--  直接URLを叩かれることを防止されるためにパスコードを設定  -->
+          <%= f.hidden_field :passcode,value:"4rtbW23lT2" %>
+          <%= f.submit '削除' %>
+        <% end %>
+      </span>
+      </td>
+    </tr>
+    <% end %>
+  <% end %>
+<% end %>
+</table>
+<div id="toTop" style="color:blue">トップに戻る</div>
+</div>
+
+<style>
+.button{
+  text-align: right;
+}
+</style>
+<script>
+ let toTop = document.getElementById('toTop');
+  toTop.addEventListener('click', function(event){
+      window.location.href = '/';
+    });
+</script>

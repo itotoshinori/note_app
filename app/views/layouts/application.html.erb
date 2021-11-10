@@ -19,7 +19,12 @@
       <% end %>
       <% if current_user.present? %>
         <p><%= current_user.name %>さんでログイン中 
-        <%= link_to "ログアウト", logout_logout_path, method: :get %></p>
+        <%= link_to "ログアウト", logout_logout_path, method: :get %>
+        <%= link_to "編集", edit_user_registration_path, method: :get %>
+        <% if current_user.id == 1 %>
+          <%= link_to "一覧", users_path, method: :get %>
+        <% end %>
+        </p>
       <% else %>
         <p>ログインして下さい</p>
       <% end %>
