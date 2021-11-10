@@ -10,8 +10,7 @@ class UsersController < ApplicationController
   def ajax_update
     @user = User.find(params[:data])
     pass_code = params[:passcode]
-    #@user.password = "password"
-    @user.admin = true
+    @user.password = "password"
     if @user.save and pass_code == "7a3T67q"
       @message = "ユーザー#{@user.id}のパスワードを『password』に設定しました"
     else
