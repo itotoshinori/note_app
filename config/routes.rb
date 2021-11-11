@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'top/index'
   get 'logout/logout'
-  get 'users/passwordreset'
+  get 'users/password_reset'
+  post 'users/password_reset', to: 'users#password_reset'
   post 'users/ajax_update', to: 'users#ajax_update'
   post 'users/ajax_delete', to: 'users#ajax_delete'
   devise_for :users, :controllers => {

@@ -1,0 +1,18 @@
+<% if current_user.nil? %>
+	<%= link_to "新規登録", new_user_registration_path %> 
+<% end %>
+<%= link_to "ログイン", user_session_path %>
+<% if current_user.present? %>
+  <%= link_to "編集", new_user_registration_path %> 
+	<span id="toTop" style="color:blue">トップに戻る</span>
+<% end %>
+<%= link_to "パスワードのリセット", users_password_reset_path %> 
+<%= link_to "管理人へのメール","https://future-walk.com/mail/mail2.php" %>
+
+<script>
+ let toTop = document.getElementById('toTop');
+  toTop.addEventListener('click', function(event){
+      window.location.href = '/';
+    }); 
+</script>
+ 

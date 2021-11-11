@@ -18,7 +18,7 @@
           <%= f.hidden_field :data,value:user.id %>
           <!--  直接URLを叩かれることを防止されるためにパスコードを設定  -->
           <%= f.hidden_field :passcode,value:"7a3T67q" %>
-          <%= f.submit 'Reset' %>
+          <%= f.submit 'Reset' , data: { confirm: "本当にパスワードをリセットしますか？"}%>
         <% end %>
       </span>
       </td>
@@ -30,7 +30,7 @@
           <%= f.hidden_field :data,value:user.id %>
           <!--  直接URLを叩かれることを防止されるためにパスコードを設定  -->
           <%= f.hidden_field :passcode,value:"4rtbW23lT2" %>
-          <%= f.submit '削除' %>
+          <%= f.submit '削除' , data: { confirm: "本当に削除しますか？"}%>
         <% end %>
       </span>
       </td>
@@ -51,5 +51,8 @@
  let toTop = document.getElementById('toTop');
   toTop.addEventListener('click', function(event){
       window.location.href = '/';
-    });
+    }); 
 </script>
+
+
+
