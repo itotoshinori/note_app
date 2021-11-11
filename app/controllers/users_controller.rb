@@ -19,13 +19,13 @@ class UsersController < ApplicationController
     email = params[:email]
     user = User.find_by(email:email)
     if user.nil?
-      @message = "このメールアドレスでの登録がありません。登録をお願いします。"
+      @message = "このメールアドレスでの登録がないかメールアドレスの入力されていません。"
     else
       result = Reset.new(user.email)
       new_password = result.new_password
       if result
         MemoMailer.creation_email(user.email,"メモシステムのパスワードを再設定をしました。","新しいパワードは #{new_password}　です。編集のリンクからご自分のパスワードに変更をお願いします。","").deliver_now
-        @message = "このメールアドレスに再設定のパスワードを送信しました。届かなければ管理人にお問合せ下さい"
+        @message = "このメールアドレスに再設定のパスワードを送信しました。迷惑メールも含めご確認頂き、届かなければ管理人にお問合せ下さい"
       else
         @message = "送信に失敗しました"
       end
