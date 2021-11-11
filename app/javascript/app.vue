@@ -153,7 +153,6 @@ export default {
         if(axios.delete("/api/memos/" + id)){
           alert("削除に成功しました。画面は全更新、初期化します。")
           window.location.reload();
-          //this.setMemo()
         }else{
           this.message = "削除に失敗しました"
         } 
@@ -184,7 +183,6 @@ export default {
       this.description = post.description
       this.link = post.link
       this.important = post.important
-      //this.showModal = false
       axios.put('/api/memos/'+post.id, {
         description: post.description,
         link:post.link

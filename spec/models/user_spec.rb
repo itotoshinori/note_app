@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before do
-    @user = User.new(name:"test",email:"test@user.jp", password:"password")
+    @user = User.new(name: 'test', email: 'test@user.jp', password: 'password')
   end
 
   describe 'バリデーション' do
@@ -23,7 +23,8 @@ RSpec.describe User, type: :model do
     end
     it 'emailが重複したらNG' do
       @user.save
-      @user2 = User.new(name:"test",email:"test@user.jp", password:"password")
+      @user2 =
+        User.new(name: 'test', email: 'test@user.jp', password: 'password')
       expect(@user2.valid?).to eq(false)
     end
   end

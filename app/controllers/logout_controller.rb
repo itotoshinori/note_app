@@ -1,5 +1,5 @@
 class LogoutController < ApplicationController
-	def logout
+  def logout
     sign_out(:user)
     redirect_to '/'
   end

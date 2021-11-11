@@ -2,8 +2,14 @@ require 'rails_helper'
 
 RSpec.describe MemoMailer, type: :model do
   before do
-    @mail = MemoMailer.creation_email("test@email.com","テスト送信がありました","がんばれ","〇〇さ
-      んから").deliver_now
+    @mail =
+      MemoMailer.creation_email(
+        'test@email.com',
+        'テスト送信がありました',
+        'がんばれ',
+        '〇〇さ
+      んから',
+      ).deliver_now
   end
   describe 'メール送信テスト' do
     it '送信されたか確認' do
@@ -15,7 +21,5 @@ RSpec.describe MemoMailer, type: :model do
       expect(@mail.subject).to eq 'メモアプリからのお知らせ'
     end
   end
-  after do
-    ActionMailer::Base.deliveries.clear
-  end
+  after { ActionMailer::Base.deliveries.clear }
 end

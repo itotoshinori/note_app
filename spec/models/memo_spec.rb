@@ -3,8 +3,16 @@ require 'rails_helper'
 RSpec.describe Memo, type: :model do
   before do
     @user = FactoryBot.create(:user)
-    @memo = Memo.new(description:"テスト投稿", important:false, complete:false,
-      twitter:false, public:false, user_id:@user.id, link:nil)
+    @memo =
+      Memo.new(
+        description: 'テスト投稿',
+        important: false,
+        complete: false,
+        twitter: false,
+        public: false,
+        user_id: @user.id,
+        link: nil,
+      )
   end
   describe 'バリデーション' do
     it 'defaultの設定では　OK' do
@@ -16,9 +24,7 @@ RSpec.describe Memo, type: :model do
     end
     it '本文が131文字以上だとエラー' do
       content = ''
-      (1..131).each do |num|
-        content = content + 'あ'
-      end
+      (1..131).each { |num| content = content + 'あ' }
       @memo.description = content
       expect(@memo.valid?).to eq(false)
     end
