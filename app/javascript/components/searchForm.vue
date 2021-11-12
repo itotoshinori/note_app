@@ -1,6 +1,6 @@
 <template>
   <div class="form">
-    <div class="box">
+    <div class="box-search">
       <div class="form-group">
         <input
           v-model="post.searchWord"
@@ -94,7 +94,7 @@ export default {
 .form-group {
   margin-bottom: 4px;
 }
-.box {
+.box-search {
   padding: 0.5em 0;
   width: 37%;
   margin: auto;
@@ -127,7 +127,7 @@ export default {
   line-height: 1.6;
 }
 @media (max-width: 1020px) and (min-width: 768px) {
-  .box {
+  .box-search {
     padding: 0.5em 1em;
     margin: 2em 0;
     width: 90%;

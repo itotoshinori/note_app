@@ -385,7 +385,6 @@ p {
       margin: 16px;
       &-body {
       padding: 0.7rem;
-      //background-color: aqua;どこがかかっているのか確認する
       }
     } 
   }  

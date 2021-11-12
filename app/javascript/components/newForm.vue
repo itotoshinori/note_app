@@ -1,6 +1,6 @@
 <template>
   <div class="form">
-    <div class="box">
+    <div class="box-form">
       <div class="form-group">
         <div class="errorMessage" v-if="post.description.length > 100">
           {{ post.description.length }}文字(130文字以下）
@@ -88,7 +88,7 @@ export default {
   padding-top: 10px;
   margin-bottom: -10px;
 }
-.box {
+.box-form {
   padding: 0.5em 1em;
   margin: 2em 0;
   width: 40%;
@@ -128,7 +128,7 @@ export default {
   margin-bottom: 10px;
 }
 @media screen and (min-width: 480px) and (max-width: 768px) {
-  .box {
+  .box-form {
     padding: 0.5em 1em;
     margin: 2em 0;
     width: 90%;
@@ -136,7 +136,7 @@ export default {
   }
 }
 @media (max-width: 1020px) and (min-width: 768px) {
-  .box {
+  .box-form {
     padding: 0.5em 1em;
     margin: 2em 0;
     width: 90%;
