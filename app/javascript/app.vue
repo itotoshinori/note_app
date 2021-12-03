@@ -1,6 +1,15 @@
 <template>
   <div id="app">
     <NewForm @panretMessage="add"></NewForm>
+        <div>{{user.name}}さん</div>    
+    <div>
+
+    <b-button pill v-b-modal.tag-modal variant="primary">Twitterタグの修正</b-button>
+  
+    <b-modal id="tag-modal" title="Twitterタグの修正">
+  
+    </b-modal>
+  </div>
     <div class="message"><div v-if = "message" class="message-box">{{ message }}</div></div>
     <SearchForm @panretMessage="search" @panretReset="allReset"></SearchForm>
     <modal :val="postItem" v-if="showModal" @panretMessage="update" @close="closeModal"></modal>
@@ -37,7 +46,6 @@
       </div>
     </div>
   </template>
-</template>
 
 <script>
 import Vue from 'vue'
@@ -46,7 +54,12 @@ import utilsMixin from "utilities";
 import NewForm from './components/newForm.vue';
 import SearchForm from './components/searchForm.vue';
 import modal from './components/modal.vue';
-import VueClipboard from 'vue-clipboard2'
+import modal2 from './components/modal2.vue';
+import VueClipboard from 'vue-clipboard2';
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+Vue.use(BootstrapVue)
 Vue.use(VueClipboard)
 
 export default {
@@ -54,11 +67,13 @@ export default {
   components: {
     NewForm,
     SearchForm,
-    modal
+    modal,
   },
   data: function () {
     return {
       memos: "",
+      users:"",
+      user:"",
       message:'',
       message2:'',
       description: '',
@@ -72,18 +87,20 @@ export default {
       searchUncomplete:'',
       upImportant:'',
       searchTwitter:'',
-      searchLink:''
+      searchLink:'',
     }
   },
   mounted () {
     setInterval(
       function() {
         this.setMemo();
-        console.log('10秒後に実行');
+        this.setUser();
+        console.log('40分後に実行');
         }.bind(this),
         27000000
       );
-    this.setMemo(); 
+    this.setMemo();
+    this.setUser();
   },
   methods: {
     setMemo: function () {
@@ -131,6 +148,12 @@ export default {
         this.memos = response.data
       ));
     },
+    setUser: function () {
+      axios.get('/api/users/1')
+      .then(response => (
+        this.user = response.data
+      ));
+    },
     addMemo: function() {
       axios.post('/api/memos', {
         description: this.description,
@@ -176,6 +199,10 @@ export default {
       this.setMemo()
     },
     openModal(item) {
+      this.postItem = item;
+      this.showModal = true;
+    },
+    openModal2(item) {
       this.postItem = item;
       this.showModal = true;
     },
@@ -240,7 +267,7 @@ export default {
     toTwitter( description, link ) {
       let content =
         "https://twitter.com/intent/tweet?text=" +
-        description +
+        description + 
         "&hashtags=駆け出しエンジニアと繋がりたい";
       if (link) {
         content = content + " " + link;
