@@ -37,12 +37,7 @@ class Api::MemosController < ApplicationController
     @memo.user_id = current_user.id
     if @memo.save
       if current_user.id != @user_admin.id
-        MemoMailer.creation_email(
-          @user_admin.email,
-          '新規投稿がありました',
-          @memo.description,
-          "#{current_user.name}さんから",
-        ).deliver_now
+        #MemoMailer.creation_email(@user_admin.email,'新規投稿がありました',@memo.description,"#{current_user.name}さんから",).deliver_now
       end
       render json: '登録に成功しました', status: 200
     else
