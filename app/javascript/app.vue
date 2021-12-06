@@ -54,8 +54,8 @@
         </div>
       </div>
     </div>
-  </template>
 </template>
+
 
 <script>
 import Vue from 'vue'
@@ -302,7 +302,7 @@ export default {
       })
     },
     checkWording(id){   
-      let content = "https://so-zou.jp/web-app/text/proofreading/?url=https%3A%2F%2Fyoung-beach-72525.herokuapp.com%2Fmemos%2F" + id
+      let content = "https://so-zou.jp/web-app/text/proofreading/?url=https%3A%2F%2Fnote-app-system.herokuapp.com%2Fmemos%2F" + id
       window.open(content, "_blank");
     },
     closeModal() {
