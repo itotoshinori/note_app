@@ -1,5 +1,23 @@
 <template>
   <div id="app">
+    <div id="app">
+    <div class="twitter_tag">
+      <button @click="openModal2" class="button_color_twitter_repair">タグの修正</button>
+    </div>
+    <div id="overlay" v-show="showContent">
+        <div id="content">
+          <h5 style="padding-left:0.7em;" >Twitterタグの修正</h5>
+          <input
+          v-model="info.twitter_tag"
+          placeholder="twitterタグ"
+          class="form-control"
+        />
+          <div style="padding-left:0.7em;">#は入れないこと</div>
+          <button @click="okButton2" class="button_color_add">OK</button>
+          <button @click="closeButton2" class="button_color_copy">Close</button>
+        </div>
+    </div>
+  </div>
     <NewForm @panretMessage="add"></NewForm>
     <div class="message"><div v-if = "message" class="message-box">{{ message }}</div></div>
     <SearchForm @panretMessage="search" @panretReset="allReset"></SearchForm>
@@ -72,7 +90,9 @@ export default {
       searchUncomplete:'',
       upImportant:'',
       searchTwitter:'',
-      searchLink:''
+      searchLink:'',
+      showContent: false,
+      info:'',
     }
   },
   mounted () {
@@ -130,6 +150,25 @@ export default {
       .then(response => (
         this.memos = response.data
       ));
+    },
+    setInfo: function() {
+      axios.get('/api/infos/1')
+      .then(response => (
+        this.info = response.data
+      ));
+    },
+    updateInfo(){
+      axios.put('/api/infos/' + this.info.id, {
+        twitter_tag: this.info.twitter_tag,
+        user_id: this.info.user_id
+      })
+      .then(response => (
+        this.message = "更新に成功しました"
+      ))
+      .catch((err) => {
+        const message = err.response.data
+        this.message = "更新に失敗しました"
+      })
     },
     addMemo: function() {
       axios.post('/api/memos', {
@@ -238,10 +277,12 @@ export default {
       })
     },
     toTwitter( description, link ) {
+      this.setInfo();
+      let tag = this.info.twitter_tag
       let content =
         "https://twitter.com/intent/tweet?text=" +
         description +
-        "&hashtags=駆け出しエンジニアと繋がりたい";
+        "&hashtags=" + tag;
       if (link) {
         content = content + " " + link;
         this.link = link;
@@ -269,7 +310,18 @@ export default {
     },
     allReset(){
       window.location.reload();
-    }
+    },
+    openModal2(){
+      this.setInfo();
+      this.showContent = true
+    },
+    okButton2(){
+      this.updateInfo()
+      this.showContent = false
+    },
+    closeButton2(){
+      this.showContent = false
+    },
   }
 }
 </script>
@@ -334,6 +386,40 @@ p {
   .important-active {
     background: #f9efdd;
   }
+  .twitter_tag{
+    background:#f7f7f7;
+    text-align: center;
+  }
+  .button_color_twitter_repair{
+    background: rgb(0, 174, 255);
+	  color:white;
+    margin:auto;
+    width:100px;
+  }
+  #overlay{
+  /*　要素を重ねた時の順番　*/
+  z-index:1;
+
+  /*　画面全体を覆う設定　*/
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:rgba(0,0,0,0.5);
+
+  /*　画面の中央に要素を表示させる設定　*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  }
+  #content{
+    z-index:2;
+    width:30%;
+    padding: 1em;
+    background:#effff7;
+  }
   @media screen and (min-width:480px) {
     .card {
       width: 90%;
@@ -376,6 +462,9 @@ p {
     .label_content{
       font-size:16px;
     }
+    #content{
+      width:70%;
+    }
   }
   @media screen and (min-width:1024px){
     .card {
@@ -387,5 +476,7 @@ p {
       padding: 0.7rem;
       }
     } 
-  }  
+  }
+  
+    
 </style>

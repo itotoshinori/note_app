@@ -76,7 +76,7 @@ RSpec.describe 'Memos', type: :request do
     it "createの挙動確認" do
       sign_in(@user)
       post '/api/memos/', params: { description: 'test', user_id: @user.id, link:"http://example.com" }, headers: { 'ACCEPT' => 'application/json' }
-      expect(response.status).to eq 201
+      expect(response.status).to eq 200
       expect(Memo.last.description).to eq("test")
     end
     it "ログインしてなければcreateは失敗する" do

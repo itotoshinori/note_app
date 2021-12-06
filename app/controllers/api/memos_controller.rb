@@ -1,7 +1,7 @@
 class Api::MemosController < ApplicationController
   protect_from_forgery except: %i[create update destroy]
   before_action :authenticate_user!
-  before_action :user_set, only: %i[index new edit create]
+  before_action :unless_current_user
   before_action :user_admin, only: [:create]
 
   def index
@@ -44,7 +44,7 @@ class Api::MemosController < ApplicationController
           "#{current_user.name}さんから",
         ).deliver_now
       end
-      render :show, status: :created
+      render json: '登録に成功しました', status: 200
     else
       render json: @memo.errors, status: :unprocessable_entity
     end

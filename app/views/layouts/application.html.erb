@@ -11,12 +11,6 @@
   </head>
   <body>
     <div class="seting">
-      <% if notice.present? %>
-       <span class="notice" style="color:blue"><%= notice %></span>
-      <% end %>
-      <% if alert.present? %>
-        <span class="alert" style="color:red"><%= alert %></span>
-      <% end %>
       <% if current_user.present? %>
         <p><%= current_user.name %>さんでログイン中 
         <%= link_to "ログアウト", logout_logout_path, method: :get %>

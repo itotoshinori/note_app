@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
   def user_admin
     @user_admin = User.first
   end
+  def unless_current_user
+    redirect_to user_session_path if current_user.blank?
+  end
 
   protected
 

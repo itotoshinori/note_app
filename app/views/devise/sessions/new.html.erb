@@ -1,4 +1,10 @@
 <div class="box">
+    <% if notice.present? %>
+       <span class="notice" style="color:blue"><%= notice %></span>
+    <% end %>
+    <% if alert.present? %>
+        <span class="alert" style="color:red"><%= alert %></span>
+    <% end %>
     <h2>ログイン</h2>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
