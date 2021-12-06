@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   	super
   	user = User.find(1)
     if current_user.present?
-  	  #MemoMailer.creation_email(user.email, "新規ユーザー登録がありました", '', "ユーザー：#{current_user.name}").deliver_now
+  	  MemoMailer.creation_email(user.email, "新規ユーザー登録がありました", '', "ユーザー：#{current_user.name}").deliver_now
       Info.new.create_info(current_user.id)
     end
   end
