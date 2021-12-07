@@ -93,6 +93,7 @@ export default {
       searchLink:'',
       showContent: false,
       info:'',
+      tag:''
     }
   },
   mounted () {
@@ -103,7 +104,8 @@ export default {
         }.bind(this),
         27000000
       );
-    this.setMemo(); 
+    this.setMemo();
+    this.setInfo();
   },
   methods: {
     setMemo: function () {
@@ -154,7 +156,8 @@ export default {
     setInfo: function() {
       axios.get('/api/infos/1')
       .then(response => (
-        this.info = response.data
+        this.info = response.data,
+        this.tag = this.info.twitter_tag
       ));
     },
     updateInfo(){
@@ -277,12 +280,12 @@ export default {
       })
     },
     toTwitter( description, link ) {
-      this.setInfo();
-      let tag = this.info.twitter_tag
+      //await this.setInfo();
+      //let tag = this.info.twitter_tag
       let content =
         "https://twitter.com/intent/tweet?text=" +
         description +
-        "&hashtags=" + tag;
+        "&hashtags=" + this.tag;
       if (link) {
         content = content + " " + link;
         this.link = link;
@@ -313,6 +316,7 @@ export default {
     },
     openModal2(){
       this.setInfo();
+      this.tag = this.info.twitter_tag
       this.showContent = true
     },
     okButton2(){
