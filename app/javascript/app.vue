@@ -8,7 +8,7 @@
         <div id="content">
           <h5 style="padding-left:0.7em;" >Twitterタグの修正</h5>
           <input
-          v-model="info.twitter_tag"
+          v-model="tag"
           placeholder="twitterタグ"
           class="form-control"
         />
@@ -320,6 +320,7 @@ export default {
       this.showContent = true
     },
     okButton2(){
+      this.info.twitter_tag = this.tag
       this.updateInfo()
       this.showContent = false
     },
