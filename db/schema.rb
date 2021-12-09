@@ -15,13 +15,6 @@ ActiveRecord::Schema.define(version: 2021_12_05_023933) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "contents", force: :cascade do |t|
-    t.string "twitter_tag"
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "infos", force: :cascade do |t|
     t.string "twitter_tag"
     t.integer "user_id"
