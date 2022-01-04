@@ -30,7 +30,7 @@ gem 'letter_opener_web'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'faker'
 gem 'devise'
-#gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 
 group :development, :test do
