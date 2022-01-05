@@ -155,7 +155,7 @@ export default {
         this.setMemo();
         console.log("10秒後に実行");
       }.bind(this),
-      10000
+      100000
     );
     this.setMemo();
     this.setInfo();
