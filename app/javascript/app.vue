@@ -2,7 +2,7 @@
   <div id="app">
     <div class="twitter_tag">
       <button @click="openModal2" class="button_color_twitter_repair">
-        タグの修正ボタン
+        タグ修正
       </button>
     </div>
     <div id="overlay" v-show="showContent">
@@ -155,7 +155,7 @@ export default {
         this.setMemo();
         console.log("10秒後に実行");
       }.bind(this),
-      1000
+      10000
     );
     this.setMemo();
     this.setInfo();
