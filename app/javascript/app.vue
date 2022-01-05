@@ -1,19 +1,17 @@
 <template>
   <div id="app">
-    <div id="app">
-      <div class="twitter_tag">
-        <button @click="openModal2" class="button_color_twitter_repair">
-          タグの修正
-        </button>
-      </div>
-      <div id="overlay" v-show="showContent">
-        <div id="content">
-          <h5 style="padding-left: 0.7em">Twitterタグの修正</h5>
-          <input v-model="tag" placeholder="twitterタグ" class="form-control" />
-          <div style="padding-left: 0.7em">#は入れないこと</div>
-          <button @click="okButton2" class="button_color_add">OK</button>
-          <button @click="closeButton2" class="button_color_copy">Close</button>
-        </div>
+    <div class="twitter_tag">
+      <button @click="openModal2" class="button_color_twitter_repair">
+        タグの修正
+      </button>
+    </div>
+    <div id="overlay" v-show="showContent">
+      <div id="content">
+        <h5 style="padding-left: 0.7em">Twitterタグの修正</h5>
+        <input v-model="tag" placeholder="twitterタグ" class="form-control" />
+        <div style="padding-left: 0.7em">#は入れないこと</div>
+        <button @click="okButton2" class="button_color_add">OK</button>
+        <button @click="closeButton2" class="button_color_copy">Close</button>
       </div>
     </div>
     <NewForm @panretMessage="add"></NewForm>
