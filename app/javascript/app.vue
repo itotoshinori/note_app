@@ -75,7 +75,7 @@
               :checked="memo.twitter"
               @change="updateChecked(memo, 3)"
             />
-            <span class="label_content">twitter</span>
+            <span class="label_content">Twitter</span>
           </div>
           <div class="button-group">
             <button @click="openModal(memo)" class="button_color_add">
@@ -100,7 +100,7 @@
                 @click="toTwitter(memo.description, memo.link)"
                 class="button_color_twitter"
               >
-                twitter
+                Twitter
               </button>
             </span>
           </div>
@@ -344,6 +344,7 @@ export default {
     toTwitter(description, link) {
       //await this.setInfo();
       //let tag = this.info.twitter_tag
+      description = description.replace('　', ' #');
       let content =
         "https://twitter.com/intent/tweet?text=" +
         description +
