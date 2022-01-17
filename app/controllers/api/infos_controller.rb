@@ -8,6 +8,7 @@ class Api::InfosController < ApplicationController
 
   def update
     @info = Info.find(params[:id])
+    @info.twitter_tag.gsub("　", '　#') if @info.twitter_tag.include("　")
     if @info.update(info_params)
       render json: '更新に成功しました', status: 200
     else
