@@ -9,7 +9,7 @@
       <div id="content">
         <h5 style="padding-left: 0.7em">Twitterタグの修正</h5>
         <input v-model="tag" placeholder="twitterタグ" class="form-control" />
-        <div style="padding-left: 0.7em">#は入れないこと</div>
+        <div style="padding-left: 0.7em">#は入れないこと　複数タグは#はつけず全角空白で間を空けて入力して下さい</div>
         <button @click="okButton2" class="button_color_add">OK</button>
         <button @click="closeButton2" class="button_color_copy">Close</button>
       </div>
