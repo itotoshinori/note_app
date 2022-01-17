@@ -348,7 +348,8 @@ export default {
       let content =
         "https://twitter.com/intent/tweet?text=" +
         description +
-        "&hashtags=" +
+        '#'+
+        //"&hashtags=" +
         this.tag;
       if (link) {
         content = content + " " + link;
