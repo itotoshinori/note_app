@@ -342,6 +342,8 @@ export default {
         });
     },
     toTwitter(description, link) {
+      //await this.setInfo();
+      //let tag = this.info.twitter_tag
       let tag = this.tag
       let tag_length = tag.length
       let tags = []
@@ -358,7 +360,7 @@ export default {
       }
       let content =
         "https://twitter.com/intent/tweet?text=" +
-        description + "&hashtags=" + tags.join('&hashtags=');
+        description + "&hashtags=" + this.tag;
       if (link) {
         content = content + " " + link;
         this.link = link;
