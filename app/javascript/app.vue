@@ -347,7 +347,8 @@ export default {
       let tag = this.tag
       let tag_length = tag.length
       let tags = []
-      let tag_dis =''
+      let tag_dis = ''
+      let tag_step = ''
       for (let step = 0; step < tag_length; step++) {
         tag_step = tag.substr(step, 1)
         if(tag_step != "　" && step != tag_length -1){
