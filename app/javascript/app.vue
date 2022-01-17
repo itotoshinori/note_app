@@ -361,7 +361,7 @@ export default {
       }
       let content =
         "https://twitter.com/intent/tweet?text=" +
-        description + "&hashtags=" +this.tag;
+        description + "&hashtags=" + tags.join("&hashtags=");
       if (link) {
         content = content + " " + link;
         this.link = link;
