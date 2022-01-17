@@ -344,13 +344,13 @@ export default {
     toTwitter(description, link) {
       //await this.setInfo();
       //let tag = this.info.twitter_tag
-      description = description.replace('　', ' #');
+      let tag = this.tag.replace('　', ' #');
       let content =
         "https://twitter.com/intent/tweet?text=" +
         description +
         '#'+
         //"&hashtags=" +
-        this.tag;
+        tag;
       if (link) {
         content = content + " " + link;
         this.link = link;
